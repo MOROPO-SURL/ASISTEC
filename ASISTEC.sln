@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Persistence", "Web.Persistence\Web.Persistence.csproj", "{D68C2E1B-2F86-42A5-8680-15AC5FFBE911}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Olupin", "Web.Olupin\Web.Olupin.csproj", "{0E3EFABF-A9AD-491E-8CF2-62869723E2EB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D68C2E1B-2F86-42A5-8680-15AC5FFBE911}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D68C2E1B-2F86-42A5-8680-15AC5FFBE911}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D68C2E1B-2F86-42A5-8680-15AC5FFBE911}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D68C2E1B-2F86-42A5-8680-15AC5FFBE911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E3EFABF-A9AD-491E-8CF2-62869723E2EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E3EFABF-A9AD-491E-8CF2-62869723E2EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E3EFABF-A9AD-491E-8CF2-62869723E2EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E3EFABF-A9AD-491E-8CF2-62869723E2EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3CC71DE2-2418-4E9C-B0DF-CEFFF0308F4D}
+	EndGlobalSection
+EndGlobal
