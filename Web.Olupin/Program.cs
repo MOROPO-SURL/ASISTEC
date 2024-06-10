@@ -1,6 +1,25 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using System.Runtime.CompilerServices;
+using System;
 
-app.MapGet("/", () => "Hello World!");
+namespace MOROPO.ASISTEC.Web.Olupin
+{
+    public class Program
+    {
+        [ModuleInitializer]
+        public static void Initialize()
+        {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+        }
 
-app.Run();
+        public static void Main(string[] args)
+        {
+            CreateWebHostBuilder(args).Build().Run();
+        }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
+    }
+}
