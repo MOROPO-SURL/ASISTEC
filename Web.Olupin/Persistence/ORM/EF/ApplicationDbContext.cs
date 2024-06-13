@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MOROPO.ASISTEC.Web.Persistence.Entities;
 using MOROPO.Framework.Guama.Core.Security.Common.Persistence.Entities;
 using MOROPO.Framework.Guama.Identity.Persistence.Entities;
 using MOROPO.Framework.Guama.Location.Persistence.Entities;
@@ -60,5 +61,11 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF
         public DbSet<OrganizationIdentity> OrganizationIdentities { get; set; }
         public DbSet<OrganizationSocialContactItemBridge> OrganizationSocialContactItemBridges { get; set; }
         public DbSet<OrganizationWebSiteContactItemBridge> OrganizationWebSiteContactItemBridges { get; set; }
+
+        public DbSet<Ilustration> Ilustrations { get; set; }
+        public DbSet<Reference> References { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<Testimonial> Testimonials { get; set; }
+        public DbSet<TextBlock> TextBlocks { get; set; }
     }
 }
