@@ -1,3 +1,237 @@
 ﻿@{ 
     Layout = "_FrontendLayout";
 }
+
+@section styles
+{
+    <style type="text/css">
+        .hero-common {
+            background-position: 50% 0;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        #hero-main {
+            min-height: 720px;
+            background-image: url('/media/images/website.s_cover_default_image.jpg');
+        }
+
+        #hero-feature {
+            min-height: 720px;
+            background-image: url('/media/images/website.s_cover_default_image.jpg');
+        }
+
+        .hero-fullsize-child {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .hero-common-vintage {
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+        }
+
+        #hero-main-vintage {
+            background-image: url('/img/01_001.svg');
+            background-position: bottom;
+        }
+
+        #hero-feature-vintage {
+            background-image: url('/img/02_001.svg');
+            background-position: top;
+        }
+
+        .hero-common-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        #partners-vintage {
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-image: url('/img/04.svg');
+            background-position: bottom;
+            min-height: 480px;
+        }
+
+        #section-service-lines {
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-image: url('/img/05.svg');
+            background-position: top;
+        }
+
+        .reference-carousel-item {
+            background-position: 50% 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 360px;
+        }
+
+        .carousel-indicators > li {
+            height: 8px;
+        }
+    </style>
+}
+
+<section id="hero-main" class="hero-common">
+    <div class="hero-fullsize-child hero-common-overlay"></div>
+    <div id="hero-main-vintage" class="hero-fullsize-child hero-common-vintage"></div>
+    <div class="container pb-5" style="z-index: 1000;">
+        <div class="jumbotron text-white text-center mb-0" style="background: none;">
+            <h1 class="display-3">Arreglando tu vida</h1>
+            <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+            <a class="btn btn-primary" href="/contact">Contactar</a>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <div class="row pt-5">
+        <div class="col-md-6"">
+            <div class="jumbotron mb-0" style="background: none;">
+                <h1 class="display-4 font-weight-bold">ASISTEC S.R.L.</h1>
+                <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+                <a class="btn btn-primary mt-4" href="/about">Conocer más</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+        </div>
+    </section>
+</div>
+
+<section id="hero-feature" class="hero-common">
+    <div class="hero-fullsize-child hero-common-overlay"></div>
+    <div id="hero-feature-vintage" class="hero-fullsize-child hero-common-vintage"></div>
+    <div class="container pt-5" style="z-index: 1000;">
+        <div class="jumbotron text-white text-center mb-0" style="background: none;">
+            <h1 class="display-3">Refresca tu vida con calidad y estilo</h1>
+            <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+            <a class="btn btn-primary" href="/contact">Contactar</a>
+        </div>
+    </div>
+</section>
+
+<section id="section-service-lines" class="mb-5">
+    <div class="container">
+        <div class="text-center text-white pt-5 pb-4">
+            <h1 class="display-4 font-weight-bold">Nuestras líneas de servicio</h1>
+            <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+        </div>
+        <div class="card-deck">
+            <div class="card">
+                <img src="/media/images/website.library_image_11.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">Nombre Servicio 1</h5>
+                    <p class="card-text">Seraphs love not ah rhyme hall than seemed did but peace dwelt aught sadness the such girls heartless all all</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/media/images/website.library_image_13.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">Nombre Servicio 2</h5>
+                    <p class="card-text">His mine childe was ancient ne he did his hall fabled sun apart days carnal in in flaunting in they heart fountain was long the the in rhyme but maddest sea flash neer talethis sad he</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="/media/images/website.library_image_07.jpg" class="card-img-top" alt="..." />
+                <div class="card-body">
+                    <h5 class="card-title">Nombre Servicio 3</h5>
+                    <p class="card-text">Low control unto few later for deem the of concubines land one and minstrels of bliss deadly not my his had was and these this or and to</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white pb-5">
+    <div class="container">
+        <div class="text-center pt-5 pb-4">
+            <h1 class="display-4 font-weight-bold">Nuestros productos más vendidos</h1>
+            <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <p class="lead text-muted">Sin elementos que mostrar por el momento.</p>
+    </div>
+
+    <div class="text-center mt-4">
+        <a class="btn btn-success" href="https://tienda.asistec.moropo.cu" target="_blank"><i class="fas faw fa-shopping-bag mr-1"></i> Visitar la Tienda</a>
+    </div>
+</section>
+
+<div class="container">
+    <div class="text-center pt-5 pb-4">
+        <h1 class="display-5 font-weight-bold">Nuestras referencias</h1>
+        <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+    </div>
+</div>
+
+<div id="references-carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#reference-item-1" data-slide-to="0" class="active"></li>
+        <li data-target="#reference-item-2" data-slide-to="1"></li>
+        <li data-target="#reference-item-3" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div id="reference-item-1" class="carousel-item active reference-carousel-item" style="background-image: url('/media/images/website.s_quotes_carousel_demo_image_1.jpg');">
+            <div class="carousel-caption">
+                <h5>First slide label</h5>
+                <p>Of harold finds whose ever sad was worse feud his harold labyrinth eremites tales go things and thy nor in</p>
+            </div>
+        </div>
+        <div id="reference-item-2" class="carousel-item reference-carousel-item" style="background-image: url('/media/images/website.s_quotes_carousel_demo_image_2.jpg');">
+            <div class="carousel-caption">
+                <h5>Secoud slide label</h5>
+                <p>Eros of in through or soul in they hope artless one disappointed he deem open start disporting there scape had heart lands knew control parasites might plain of was old all these</p>
+            </div>
+        </div>
+        <div id="reference-item-3" class="carousel-item reference-carousel-item" style="background-image: url('/media/images/website.s_quotes_carousel_demo_image_0.jpg');">
+            <div class="carousel-caption">
+                <h5>Thirt slide label</h5>
+                <p>Some representative placeholder content for the first slide.</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-target="#references-carousel" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-target="#references-carousel" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </button>
+</div>
+
+<section class="bg-white">
+    <div class="container">
+        <div class="text-center pt-5 pb-4">
+            <h1 class="display-5 font-weight-bold">Nuestros socios</h1>
+            <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+        </div>
+    </div>
+
+    <div id="partners-vintage" class="text-center">
+        <p class="lead text-muted mb-0 py-3">Sin elementos que mostrar por el momento.</p>
+    </div>
+</section>
+
+<section class="pb-5" style="background-color: #0C98E7;">
+    <div class="container pb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-sm-9 text-white">
+                <h2>Call to action title</h2>
+                <p class="mb-0">Though climes days riot other for could ways the at than what now soon waste pangs before lyres and deemed</p>
+            </div>
+            <div class="col-md-6 col-sm-3 text-right">
+                <a class="btn btn-secondary text-uppercase" href="/contact">Contáctanos</a>
+            </div>
+        </div>
+    </div>
+</section>

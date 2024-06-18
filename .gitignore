@@ -396,4 +396,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-/Web.Olupin/wwwroot/media/images
+/Web.Olupin/wwwroot/media

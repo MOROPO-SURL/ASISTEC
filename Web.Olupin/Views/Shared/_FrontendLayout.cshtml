@@ -2,8 +2,19 @@
     Layout = "_Layout";
 }
 
+@section styles
+{
+    <style type="text/css">
+        body {
+            background-color: #f9f9f9;
+        }
+    </style>
+
+    @RenderSection("styles", false)
+}
+
 @await Component.InvokeAsync("FrontendNavigationBar")
 
-<div class="mb-4" style="margin-top: 60px;">
+<div class="mb-4" style="margin-top: 152px;">
     @RenderBody()
 </div>
