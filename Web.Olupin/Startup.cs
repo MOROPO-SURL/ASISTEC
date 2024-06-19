@@ -6,6 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Repositories;
+using MOROPO.ASISTEC.Web.Persistence.Entities;
+using MOROPO.ASISTEC.Web.Persistence.Enumerations;
 using MOROPO.Framework.Guama.Core.Persistence.Repositories;
 using MOROPO.Framework.Guama.Core.Security.Common.Presentation.Web.Frontend.Extensions;
 using MOROPO.Framework.Guama.Media.Presentation.Web.Common.Extensions;
@@ -42,6 +45,7 @@ namespace MOROPO.ASISTEC.Web.Olupin
             services.PerformMediaWebCommonRelativePathFileManagementServiceRegistration();
 
             services.AddScoped<IEntityRepository<Framework.Guama.Core.Persistence.ORM.EF.Entities.Trace, long>, Framework.Guama.Core.Persistence.ORM.EF.Repositories.TraceRepository>();
+            services.AddScoped<IEntityRepository<Ilustration, IlustrationId>, IlustrationRepository>();
 
             services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Helpers.Facade.IDataInitializationHelper, Helpers.DataInitializationHelper>();
 

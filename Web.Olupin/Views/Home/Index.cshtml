@@ -1,4 +1,6 @@
-﻿@{ 
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Frontend.HomeIndexViewModel
+
+@{ 
     Layout = "_FrontendLayout";
 }
 
@@ -7,6 +9,7 @@
     <style type="text/css">
         .hero-common {
             background-position: 50% 0;
+            background-size: cover;
             overflow: hidden;
             position: relative;
             display: flex;
@@ -16,12 +19,18 @@
 
         #hero-main {
             min-height: 720px;
-            background-image: url('/media/images/website.s_cover_default_image.jpg');
+            @if (Model.HeroIlustration != null)
+            {
+                @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.HeroIlustration.Image.Id, Model.HeroIlustration.Image.Extension))
+            }
         }
 
         #hero-feature {
             min-height: 720px;
-            background-image: url('/media/images/website.s_cover_default_image.jpg');
+            @if (Model.MainPromoIlustration != null)
+            {
+                @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.MainPromoIlustration.Image.Id, Model.MainPromoIlustration.Image.Extension))
+            }
         }
 
         .hero-fullsize-child {
@@ -101,6 +110,10 @@
             </div>
         </div>
         <div class="col-md-6">
+            @if (Model.AboutSummaryIlustration != null)
+            {
+                <img class="img-fluid img-thumbnail" title="ASISTEC S.R.L." src="/media/images/@Model.AboutSummaryIlustration.Image.Id.@Model.AboutSummaryIlustration.Image.Extension" />
+            }
         </div>
     </section>
 </div>
@@ -222,7 +235,7 @@
     </div>
 </section>
 
-<section class="pb-5" style="background-color: #0C98E7;">
+<section class="pb-5" style="background-color: #FF6702;">
     <div class="container pb-5">
         <div class="row align-items-center">
             <div class="col-md-6 col-sm-9 text-white">
