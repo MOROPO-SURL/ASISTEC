@@ -1,7 +1,6 @@
 ﻿using MOROPO.ASISTEC.Web.Persistence.Entities;
 using MOROPO.ASISTEC.Web.Persistence.Enumerations;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace MOROPO.ASISTEC.Web.Olupin.Models.View.Backend
 {
@@ -18,7 +17,7 @@ namespace MOROPO.ASISTEC.Web.Olupin.Models.View.Backend
 
         public TextBlock Export()
         {
-            var entity = new TextBlock();
+            var entity = new TextBlock { Id = Id };
 
             Mergue(entity);
 
