@@ -2,12 +2,19 @@
 {
     public enum TextBlockId
     {
-        HomeHero,
-        AboutSummary,
-        MainPromo,
-        ServicesHeader,
-        ProductsHeader,
-        ReferencesHeader,
-        CallToAction
+        HomeHero = 0,
+        HomeAboutSummary = 1,
+        HomeMainPromo = 2,
+        HomeServicesHeader = 3,
+        HomeProductsHeader = 4,
+        HomeTestimonialsHeader = 5,
+        HomeReferencesHeader = 6,
+        HomeCallToAction = 7,
+        AboutIntro = 20,
+        ServicesIntro = 40,
+        ProductsIntro = 60,
+        SolutionsIntro = 70,
+        NewsIntro = 80,
+        ContactIntro = 90
     }
 }
