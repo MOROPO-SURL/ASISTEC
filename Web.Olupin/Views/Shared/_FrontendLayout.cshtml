@@ -13,6 +13,10 @@
     @RenderSection("styles", false)
 }
 
+@section scripts {
+    @RenderSection("scripts", false)
+}
+
 @await Component.InvokeAsync("FrontendNavigationBar")
 
 <div class="mb-4" style="margin-top: 152px;">

@@ -8,6 +8,8 @@
 
 @section styles
 {
+    <link rel="stylesheet" href="~/vendor/leaflet/leaflet.css" />
+
     <style type="text/css">
         #hero-main {
             min-height: 240px;
@@ -31,10 +33,31 @@
             left: 0;
             right: 0;
         }
+
+        #map {
+            height: 240px;
+        }
     </style>
 }
 
-<section id="hero-main" class="mb-5">
+@section scripts
+{
+    <script type="text/javascript" src="~/vendor/leaflet/leaflet.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var map = L.map('map', {
+                scrollWheelZoom: false
+            }).setView([21.3792, -77.9184], 16);
+
+            var baseLayer = new L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+        });
+    </script>
+}
+
+<section id="hero-main" class="mb-3">
     <div class="hero-fullsize-child hero-common-overlay"></div>
     <div id="hero-main-vintage" class="hero-fullsize-child hero-common-vintage"></div>
     <div class="container" style="z-index: 1000;">
@@ -42,8 +65,64 @@
     </div>
 </section>
 
-<section>
-    <div class="container">
-        <p>Would the change him adversity carnal resolved into to condemned childe he peace feud not ere stalked only suits present and done to oh spent sought or then and to not childe artless adieu mine harolds few this sought in parting of him then in objects bliss flow start of given basked he shamed to nor holy for in almost way of ah can dear his it ee not his the and but nine not beyond moths or his ear crime would heartless thy suits peace which passion crime heartless will him goodly of had flash deem sore bacchanals he satiety her drowsy day counsel by him the a still more was none ne honeyed then the in feeble the</p>
+<section class="container">
+    <p class="lead mb-5">¿Deseas conocer más sobre nuestros servicios? ¡Contáctanos! Nos encantará conversar contigo.</p>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Envíanos un mensaje</h2>
+            <form>
+                <label>Tu nombre:</label>
+                <input type="text" name="name" class="form-control mb-3" />
+                <label>Tu correo electrónico:</label>
+                <input type="email" name="email" class="form-control mb-3" />
+                <label>Tu número de teléfono (opcional):</label>
+                <input type="tel" name="phone" class="form-control mb-3" />
+                <label>Asunto:</label>
+                <input type="text" name="subject" class="form-control mb-3" />
+                <label>Mensaje:</label>
+                <textarea name="message" rows="8" class="form-control mb-3"></textarea>
+
+                <input type="submit" class="btn btn-primary" value="ENVIAR" />
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <h2 class="mb-3">Dónde encontrarnos?</h2>
+            <div class="card">
+                <div id="map" class="card-img-top"></div>
+                <div class="card-body">
+                    <h4 class="card-title">Domicilio Social</h4>
+                    <p class="card-text">Puedes acercarte a nuestras oficinas a recibir una atención personalizada por un equipo de excelentes expertos, que te ayudarán a encontrar la solución que está buscando.</p>
+                    <div class="row no-gutters">
+                        <div class="col-auto"><i class="fas fa-fw fa-map-marked"></i></div>
+                        <div class="col ml-1">
+                            <p>Calle Cristo número 70 entre San Antonio y Hospital, ciudad de Camagüey, República de Cuba</p>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-auto"><i class="fas fa-fw fa-clock"></i></div>
+                        <div class="col ml-1">
+                            <p>De luines a viernes, de 8:00 AM a 4:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-auto">
+                            <i class="fas fa-fw fa-phone"></i>
+                        </div>
+                        <div class="col ml-1">
+                            <p><a href="tel:+5353201929" class="ml-1 text-dark">(+53) 5 320 1929</a></p>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-auto">
+                            <span class="fas fa-fw fa-envelope"></span>
+                        </div> 
+                        <div class="col ml-1">
+                            <a href="mailto:contacto@asistec.cu" class="text-dark">contacto@asistec.cu</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
