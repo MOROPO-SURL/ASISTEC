@@ -26,9 +26,30 @@ namespace MOROPO.ASISTEC.Web.Olupin.Extensions
                 Role = Constants.Authorization.TraceViewerPermission
             });
 
+            var siteContentsSection = new List<ManagementDashboardSectionViewModel>
+            {
+                new ManagementDashboardSectionViewModel
+                {
+                    Title = "Ilustraciones",
+                    Controller = "ilustrations",
+                    Action= "index",
+                    Area = "site",
+                    Role = Constants.Authorization.IlustrationViewerPermission
+                },
+                //new ManagementDashboardSectionViewModel
+                //{
+                //    Title = "Text Blocks",
+                //    Controller = "richtextblocks",
+                //    Action= "index",
+                //    Area = "site",
+                //    Role = Constants.Authorization.RichTextBlockViewerPermission
+                //}
+            };
+
             return new Dictionary<string, ICollection<ManagementDashboardSectionViewModel>>
             {
-                { "Security", securitySections }
+                { "Seguridad", securitySections },
+                { "Contenidos del Sitio", siteContentsSection },
             };
         }
     }

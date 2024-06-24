@@ -36,10 +36,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\View\Frontend\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <ProjectReference Include="..\Web.Persistence\Web.Persistence.csproj" />
 	</ItemGroup>
 
