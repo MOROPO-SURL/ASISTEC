@@ -20,6 +20,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="Areas\Site\Views\TextBlocks\Edit.cshtml" />
+	  <None Include="Areas\Site\Views\TextBlocks\Index.cshtml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="GuamaFramework.Core.Presentation.Web.Security" Version="6.0.0.20" />
 		<PackageReference Include="GuamaFramework.Core.Security.Common.Presentation.Web.Frontend" Version="6.0.0.20" />
 		<PackageReference Include="GuamaFramework.Media.Presentation.Web.Common" Version="6.0.0.20" />

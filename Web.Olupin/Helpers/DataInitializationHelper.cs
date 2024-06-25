@@ -35,6 +35,27 @@ namespace MOROPO.ASISTEC.Web.Olupin.Helpers
 
             #endregion
 
+            #region TextBlock
+
+            if (!permissionDbSet.Any(item => item.Code.Equals(Constants.Authorization.TextBlockViewerPermission)))
+            {
+                permissionDbSet.Add(Constants.Authorization.TextBlockViewerPermission.ToPermissionEntity(Constants.Authorization.TextBlockManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(Constants.Authorization.TextBlockCreatorPermission)))
+            {
+                permissionDbSet.Add(Constants.Authorization.TextBlockCreatorPermission.ToPermissionEntity(Constants.Authorization.TextBlockManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(Constants.Authorization.TextBlockEditorPermission)))
+            {
+                permissionDbSet.Add(Constants.Authorization.TextBlockEditorPermission.ToPermissionEntity(Constants.Authorization.TextBlockManagementPermissionGroup));
+            }
+            if (!permissionDbSet.Any(item => item.Code.Equals(Constants.Authorization.TextBlockRemoverPermission)))
+            {
+                permissionDbSet.Add(Constants.Authorization.TextBlockRemoverPermission.ToPermissionEntity(Constants.Authorization.TextBlockManagementPermissionGroup));
+            }
+
+            #endregion
+
             if (dbContext is Framework.Guama.Core.Persistence.ORM.EF.Context.Contract.ITraceableDbContext)
             {
                 ((Framework.Guama.Core.Persistence.ORM.EF.Context.Contract.ITraceableDbContext)dbContext).SaveChanges("system");

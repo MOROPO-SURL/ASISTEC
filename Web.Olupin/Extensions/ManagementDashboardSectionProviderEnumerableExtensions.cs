@@ -36,14 +36,14 @@ namespace MOROPO.ASISTEC.Web.Olupin.Extensions
                     Area = "site",
                     Role = Constants.Authorization.IlustrationViewerPermission
                 },
-                //new ManagementDashboardSectionViewModel
-                //{
-                //    Title = "Text Blocks",
-                //    Controller = "richtextblocks",
-                //    Action= "index",
-                //    Area = "site",
-                //    Role = Constants.Authorization.RichTextBlockViewerPermission
-                //}
+                new ManagementDashboardSectionViewModel
+                {
+                    Title = "Text Blocks",
+                    Controller = "textblocks",
+                    Action= "index",
+                    Area = "site",
+                    Role = Constants.Authorization.TextBlockViewerPermission
+                }
             };
 
             return new Dictionary<string, ICollection<ManagementDashboardSectionViewModel>>

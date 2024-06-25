@@ -1,4 +1,4 @@
-﻿namespace MOROPO.PremierAutomotiveExport.WebOlupin.Components
+﻿namespace MOROPO.ASISTEC.Web.Olupin.Components
 {
     public class FrontendNavigationBarViewComponent : Microsoft.AspNetCore.Mvc.ViewComponent
     {
