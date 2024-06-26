@@ -18,5 +18,11 @@ namespace MOROPO.ASISTEC.Web.Persistence.Entities
 
         [Required]
         public string Description { get; set; }
+
+        public int Priority { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Schema.ForeignKey(nameof(FeatureImageId))]
+        public Framework.Guama.Media.Persistence.Entities.Image FeatureImage { get; set; }
+        public System.Guid FeatureImageId { get; set; }
     }
 }

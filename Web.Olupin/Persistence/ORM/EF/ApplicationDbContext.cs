@@ -63,9 +63,14 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF
         public DbSet<OrganizationWebSiteContactItemBridge> OrganizationWebSiteContactItemBridges { get; set; }
 
         public DbSet<Ilustration> Ilustrations { get; set; }
-        public DbSet<Reference> References { get; set; }
+        public DbSet<Partner> Partners { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<TextBlock> TextBlocks { get; set; }
+        public DbSet<BlogEntry> BlogEntries { get; set; }
+        public DbSet<Solution> Solutions { get; set; }
+        public DbSet<Representative> Representatives { get; set; }
+        public DbSet<PageVisit> PageVisits { get; set; }
+        public DbSet<ContactRecord> ContactRecords { get; set; }
     }
 }

@@ -1,22 +1,21 @@
 ﻿using MOROPO.ASISTEC.Web.Persistence.Entities;
 using MOROPO.Framework.Guama.Core.Presentation.Web.Common.ComponentModel.DataAnnotations;
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace MOROPO.ASISTEC.Web.Olupin.Models.View.Backend
 {
     public class TestimonialInputViewModel : Framework.Guama.Core.Persistence.Presentation.Models.Contract.IEntityInputModel<Testimonial, System.Guid>
     {
-        public Guid Id { get ; set ; }
+        public System.Guid Id { get ; set ; }
 
         [Required(ErrorMessage = "RequiredValidationErrorMessage")]
-        [FormFileContentTypes(ContentTypes = new string[] { "image/png", "image/jpeg" }, ErrorMessage = "PNG_JPEG_FileAllowedOnlyMessage")]
-        [Display(Name = "ImageFile")]
-        public Microsoft.AspNetCore.Http.IFormFile ImageFile { get; set; }
+        [FormFileContentTypes(ContentTypes = ["image/png", "image/jpeg"], ErrorMessage = "PNG_JPEG_FileAllowedOnlyMessage")]
+        [Display(Name = "ContextImageFile")]
+        public Microsoft.AspNetCore.Http.IFormFile ContextImageFile { get; set; }
 
-        public System.Guid ImageId { get; set; }
+        public System.Guid ContextImageId { get; set; }
 
-        public string? ImageExtension { get; set; }
+        public string ContextImageExtension { get; set; }
 
         [Required(ErrorMessage = "RequiredValidationErrorMessage")]
         [Display(Name = "InstitutionName")]
@@ -28,6 +27,15 @@ namespace MOROPO.ASISTEC.Web.Olupin.Models.View.Backend
 
         [Display(Name = "RepresentativePosition")]
         public string RepresentativePosition { get; set; }
+
+        [Required(ErrorMessage = "RequiredValidationErrorMessage")]
+        [FormFileContentTypes(ContentTypes = ["image/png", "image/jpeg"], ErrorMessage = "PNG_JPEG_FileAllowedOnlyMessage")]
+        [Display(Name = "RepresentativeImageFile")]
+        public Microsoft.AspNetCore.Http.IFormFile RepresentativeImageFile { get; set; }
+
+        public System.Guid RepresentativeImageId { get; set; }
+
+        public string RepresentativeImageExtension { get; set; }
 
         [Required(ErrorMessage = "RequiredValidationErrorMessage")]
         [Display(Name = "Review")]
@@ -45,11 +53,13 @@ namespace MOROPO.ASISTEC.Web.Olupin.Models.View.Backend
         public void Import(Testimonial entity)
         {
             Id = entity.Id;
-            ImageId = entity.ContextImageId;
-            ImageExtension = MimeTypes.MimeTypeMap.GetExtension(entity.ContextImage.ContentType);
+            ContextImageId = entity.ContextImageId;
+            ContextImageExtension = MimeTypes.MimeTypeMap.GetExtension(entity.ContextImage.ContentType);
             InstitutionName = entity.InstitutionName;
             RepresentativeName = entity.RepresentativeName;
             RepresentativePosition = entity.RepresentativePosition;
+            RepresentativeImageId = entity.RepresentativeImageId;
+            RepresentativeImageExtension = MimeTypes.MimeTypeMap.GetExtension(entity.RepresentativeImage.ContentType);
             Review = entity.Review;
         }
 

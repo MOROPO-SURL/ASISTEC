@@ -46,6 +46,15 @@ namespace MOROPO.ASISTEC.Web.Olupin
 
             services.AddScoped<IEntityRepository<Framework.Guama.Core.Persistence.ORM.EF.Entities.Trace, long>, Framework.Guama.Core.Persistence.ORM.EF.Repositories.TraceRepository>();
             services.AddScoped<IEntityRepository<Ilustration, IlustrationId>, IlustrationRepository>();
+            services.AddScoped<IEntityRepository<TextBlock, TextBlockId>, TextBlockRepository>();
+            services.AddScoped<IEntityRepository<Partner, System.Guid>, PartnerRepository>();
+            services.AddScoped<IEntityRepository<Service, System.Guid>, ServiceRepository>();
+            services.AddScoped<IEntityRepository<Testimonial, System.Guid>, TestimonialRepository>();
+            services.AddScoped<IEntityRepository<BlogEntry, long>, BlogEntryRepository>();
+            services.AddScoped<IEntityRepository<ContactRecord, long>, ContactRecordRepository>();
+            services.AddScoped<IEntityRepository<PageVisit, long>, PageVisitRepository>();
+            services.AddScoped<IEntityRepository<Representative, System.Guid>, RepresentativeRepository>();
+            services.AddScoped<IEntityRepository<Solution, int>, SolutionRepository>();
 
             services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Helpers.Facade.IDataInitializationHelper, Helpers.DataInitializationHelper>();
 

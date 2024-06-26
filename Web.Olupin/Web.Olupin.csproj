@@ -20,6 +20,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Include="Areas\Interaction\Views\ContactRecords\Details.cshtml" />
+	  <None Include="Areas\Interaction\Views\ContactRecords\Index.cshtml" />
 	  <None Include="Areas\Site\Views\TextBlocks\Edit.cshtml" />
 	  <None Include="Areas\Site\Views\TextBlocks\Index.cshtml" />
 	</ItemGroup>

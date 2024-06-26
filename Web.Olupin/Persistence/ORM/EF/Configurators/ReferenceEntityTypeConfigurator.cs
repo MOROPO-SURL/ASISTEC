@@ -3,13 +3,13 @@ using MOROPO.ASISTEC.Web.Persistence.Entities;
 
 namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Configurators
 {
-    public class ReferenceEntityTypeConfigurator : Framework.Guama.Core.Persistence.ORM.EF.Configurators.AbstractEntityTypeConfigurator<Reference>
+    public class ReferenceEntityTypeConfigurator : Framework.Guama.Core.Persistence.ORM.EF.Configurators.AbstractEntityTypeConfigurator<Partner>
     {
-        protected override void ApplayRules(EntityTypeBuilder<Reference> entityTypeBuilder)
+        protected override void ApplayRules(EntityTypeBuilder<Partner> entityTypeBuilder)
         {
             base.ApplayRules(entityTypeBuilder);
 
-            entityTypeBuilder.HasOne(_entity => _entity.Identity).WithOne().HasForeignKey<Reference>(_entity => _entity.IdentityId).IsRequired();
+            entityTypeBuilder.HasOne(_entity => _entity.Identity).WithOne().HasForeignKey<Partner>(_entity => _entity.IdentityId).IsRequired();
         }
     }
 }

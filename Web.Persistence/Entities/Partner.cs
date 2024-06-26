@@ -1,6 +1,6 @@
 ﻿namespace MOROPO.ASISTEC.Web.Persistence.Entities
 {
-    public class Reference : Framework.Guama.Core.Persistence.Entities.Contract.IEntity<System.Guid>
+    public class Partner : Framework.Guama.Core.Persistence.Entities.Contract.IEntity<System.Guid>
     {
         [System.ComponentModel.DataAnnotations.Key]
         public System.Guid Id { get; set; } = System.Guid.NewGuid();

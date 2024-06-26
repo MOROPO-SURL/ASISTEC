@@ -19,7 +19,7 @@ namespace MOROPO.ASISTEC.Web.Olupin.Extensions
 
             securitySections.Add(new ManagementDashboardSectionViewModel
             {
-                Title = "Changes",
+                Title = "Cambios",
                 Controller = "traces",
                 Action = "index",
                 Area = "security",
@@ -38,11 +38,75 @@ namespace MOROPO.ASISTEC.Web.Olupin.Extensions
                 },
                 new ManagementDashboardSectionViewModel
                 {
-                    Title = "Text Blocks",
+                    Title = "Bloques de Texto",
                     Controller = "textblocks",
                     Action= "index",
                     Area = "site",
                     Role = Constants.Authorization.TextBlockViewerPermission
+                },
+                new ManagementDashboardSectionViewModel
+                {
+                    Title = "Noticias",
+                    Controller = "blogentries",
+                    Action= "index",
+                    Area = "site",
+                    Role = Constants.Authorization.BlogEntryViewerPermission
+                }
+            };
+
+            var businessContentsSection = new List<ManagementDashboardSectionViewModel>
+            {
+                new ManagementDashboardSectionViewModel
+                {
+                    Title = "Representantes",
+                    Controller = "representatives",
+                    Action= "index",
+                    Area = "business",
+                    Role = Constants.Authorization.RepresentativeViewerPermission
+                },
+                new ManagementDashboardSectionViewModel
+                {
+                    Title = "Servicios",
+                    Controller = "services",
+                    Action= "index",
+                    Area = "business",
+                    Role = Constants.Authorization.ServiceViewerPermission
+                },
+                new ManagementDashboardSectionViewModel
+                {
+                    Title = "Socios",
+                    Controller = "partners",
+                    Action= "index",
+                    Area = "business",
+                    Role = Constants.Authorization.PartnerViewerPermission
+                },
+                new ManagementDashboardSectionViewModel
+                {
+                    Title = "Soluciones",
+                    Controller = "solutions",
+                    Action= "index",
+                    Area = "business",
+                    Role = Constants.Authorization.SolutionViewerPermission
+                },
+                new ManagementDashboardSectionViewModel
+                {
+                    Title = "Testimonios",
+                    Controller = "testimonials",
+                    Action= "index",
+                    Area = "business",
+                    Role = Constants.Authorization.TestimonialViewerPermission
+                }
+            };
+
+            var interactionContentsSection = new List<ManagementDashboardSectionViewModel>
+            {
+                new ManagementDashboardSectionViewModel
+                {
+                    Title = "Registro de Contacto",
+                    Controller = "contactrecords",
+                    Action= "index",
+                    Area = "interaction",
+                    Role = Constants.Authorization.ContactRecordViewerPermission
                 }
             };
 
@@ -50,6 +114,8 @@ namespace MOROPO.ASISTEC.Web.Olupin.Extensions
             {
                 { "Seguridad", securitySections },
                 { "Contenidos del Sitio", siteContentsSection },
+                { "Datos del Negocio", businessContentsSection },
+                { "Interación", interactionContentsSection }
             };
         }
     }

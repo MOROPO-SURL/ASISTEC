@@ -1,0 +1,150 @@
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Backend.TestimonialInputViewModel
+
+@{
+    const string TITLE = "Modificar Testimonio";
+    const string HEADER = "Administración de Testimonios";
+
+    ViewData["TITLE"] = TITLE;
+    ViewData["HEADER"] = HEADER;
+
+    ViewData[BreadcrumbViewModel.BREADCRUMBS_MAP_KEY] = new List<BreadcrumbViewModel>
+    {
+        new BreadcrumbViewModel
+        {
+            Caption = "<i class=\"fas fa-fw fa-tachometer-alt\"></i> " + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
+            Url = Url.Action("Index", "Dashboard", new { Area = "management" })
+        },
+        new BreadcrumbViewModel
+        {
+            Caption = HEADER,
+            Url = Url.Action("index")
+        },
+        new BreadcrumbViewModel
+        {
+            Caption = TITLE
+        }
+    };
+
+    Layout = "_BackendLayout";
+
+    var prioritySelectListItems = new List<SelectListItem>();
+
+    for (int i = 1; i <= 10; i++)
+    {
+        prioritySelectListItems.Add(new SelectListItem { Text = i.ToString(), Value = i.ToString() });
+    }
+}
+
+@section styles {
+    <style type="text/css">
+        #ContextImageFile, #RepresentativeImageFile {
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+    </style>
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            $(document).on("change", "#ContextImageFile", function () {
+                var files = !!this.files ? this.files : [];
+
+                if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+
+                if (/^image/.test(files[0].type)) {
+                    var reader = new FileReader();
+
+                    reader.readAsDataURL(files[0]);
+
+                    reader.onloadend = function () {
+                        $('#ContextImageFilePreview').attr('src', this.result);
+                    }
+                }
+            });
+
+            $(document).on("change", "#RepresentativeImageFile", function () {
+                var files = !!this.files ? this.files : [];
+
+                if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+
+                if (/^image/.test(files[0].type)) {
+                    var reader = new FileReader();
+
+                    reader.readAsDataURL(files[0]);
+
+                    reader.onloadend = function () {
+                        $('#RepresentativeFilePreview').attr('src', this.result);
+                    }
+                }
+            });
+        });
+    </script>
+}
+
+<hr class="mt-0 mb-4" />
+
+@using (Html.BeginForm("edit", "testimonials", new { Area = "business", key = string.Empty }, FormMethod.Post, true, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    @Html.HiddenFor(model => model.Id)
+    @Html.HiddenFor(model => model.ContextImageId)
+    @Html.HiddenFor(model => model.RepresentativeImageId)
+
+    <div class="card mb-4">
+        <div class="card-header"><h5 class="mb-0 font-weight-bold text-primary">@TITLE</h5></div>
+
+        <div class="card-body">
+            <div class="mb-3">
+                <div class="card">
+                    <img class="card-img-top" src="~/media/images/@Model.ContextImageId.@Model.ContextImageExtension" id="ContextImageFilePreview" />
+                    <label class="btn btn-light" style="border-top-left-radius: 0; border-top-right-radius: 0; margin-bottom: 0;">
+                        @GlobalViewLocalizationHelper.Localize("Upload", ViewLocalizer) ...
+                        @Html.EditorFor(model => model.ContextImageFile)
+                    </label>
+                </div>
+                @Html.ValidationMessageFor(model => model.ContextImageFile, null, new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="card">
+                        <img src="~/media/images/@Model.RepresentativeImageId.@Model.RepresentativeImageExtension" class="card-img-top" id="RepresentativeFilePreview" />
+                        <label class="btn btn-light" style="border-top-left-radius: 0; border-top-right-radius: 0; margin-bottom: 0;">
+                            @GlobalViewLocalizationHelper.Localize("Upload", ViewLocalizer) ...
+                            @Html.EditorFor(model => model.RepresentativeImageFile)
+                        </label>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.RepresentativeImageFile, null, new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.RepresentativeName, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.RepresentativeName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RepresentativeName, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.RepresentativePosition, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.RepresentativePosition, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RepresentativePosition, null, new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.InstitutionName, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.InstitutionName, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.InstitutionName, null, new { @class = "text-danger" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(model => model.Review, new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.Review, 10, 0, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Review, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Modificar</button>
+            <a class="btn btn-secondary" href="@Url.Action("index")">Regresar al listado</a>
+        </div>
+    </div>
+}

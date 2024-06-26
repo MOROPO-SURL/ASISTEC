@@ -20,6 +20,10 @@ namespace MOROPO.ASISTEC.Web.Persistence.Entities
 
         public string RepresentativePosition { get; set; }
 
+        [System.ComponentModel.DataAnnotations.Schema.ForeignKey(nameof(RepresentativeImageId))]
+        public Image RepresentativeImage { get; set; }
+        public System.Guid RepresentativeImageId { get; set; }
+
         [Required]
         [MaxLength(255)]
         public string Review {  get; set; }

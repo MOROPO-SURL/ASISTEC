@@ -8,7 +8,7 @@
         HomeServicesHeader = 3,
         HomeProductsHeader = 4,
         HomeTestimonialsHeader = 5,
-        HomeReferencesHeader = 6,
+        HomePartnersHeader = 6,
         HomeCallToAction = 7,
         AboutIntro = 20,
         ServicesIntro = 40,

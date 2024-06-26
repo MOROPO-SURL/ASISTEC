@@ -7,13 +7,15 @@ namespace MOROPO.ASISTEC.Web.Olupin.Models.View
     {
         public Guid Id { get ; set ; }
 
-        public ImageDisplayViewModel Image { get; set ; }
+        public ImageDisplayViewModel ContextImage { get; set ; }
        
         public string InstitutionName { get; set; }
 
         public string RepresentativeName { get; set; }
 
         public string RepresentativePosition { get; set; }
+
+        public ImageDisplayViewModel RepresentativeImage { get; set; }
 
         public string Review { get; set; }
 
@@ -24,10 +26,11 @@ namespace MOROPO.ASISTEC.Web.Olupin.Models.View
             RepresentativeName = entity.RepresentativeName;
             RepresentativePosition = entity.RepresentativePosition;
             Review = entity.Review;
-            
-            Image = new ImageDisplayViewModel();
+            RepresentativeImage = new ImageDisplayViewModel();
+            ContextImage = new ImageDisplayViewModel();
 
-            Image.Import(entity.ContextImage);
+            RepresentativeImage.Import(entity.RepresentativeImage);
+            ContextImage.Import(entity.ContextImage);
         }
     }
 }

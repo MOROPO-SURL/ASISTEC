@@ -1,4 +1,5 @@
 ﻿using MOROPO.ASISTEC.Web.Persistence.Entities;
+using MOROPO.Framework.Guama.Core.Presentation.Web.Common.ComponentModel.DataAnnotations;
 using System;
 using System.ComponentModel.DataAnnotations;
 
@@ -22,6 +23,17 @@ namespace MOROPO.ASISTEC.Web.Olupin.Models.View.Backend
         [Display(Name = "Description")]
         public string Description { get; set; }
 
+        public int Priority { get; set; }
+
+        [Required(ErrorMessage = "RequiredValidationErrorMessage")]
+        [FormFileContentTypes(ContentTypes = new string[] { "image/png", "image/jpeg" }, ErrorMessage = "PNG_JPEG_FileAllowedOnlyMessage")]
+        [Display(Name = "ImageFile")]
+        public Microsoft.AspNetCore.Http.IFormFile FeatureImageFile { get; set; }
+
+        public System.Guid FeatureImageId { get; set; }
+
+        public string? FeatureImageExtension { get; set; }
+
         public Service Export()
         {
             var entity = new Service();
@@ -38,6 +50,9 @@ namespace MOROPO.ASISTEC.Web.Olupin.Models.View.Backend
             Enabled = entity.Enabled;
             Summary = entity.Summary;
             Description = entity.Description;
+            Priority = entity.Priority;
+            FeatureImageId = entity.FeatureImageId;
+            FeatureImageExtension = MimeTypes.MimeTypeMap.GetExtension(entity.FeatureImage.ContentType);
         }
 
         public void Mergue(Service entity)
@@ -46,6 +61,7 @@ namespace MOROPO.ASISTEC.Web.Olupin.Models.View.Backend
             entity.Enabled = Enabled;
             entity.Summary = Summary;
             entity.Description = Description;
+            entity.Priority = Priority;
         }
     }
 }

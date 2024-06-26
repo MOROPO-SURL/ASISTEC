@@ -1,18 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MOROPO.ASISTEC.Web.Persistence.Entities;
-using System.Linq;
 
 namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Repositories
 {
-    public class TestimonialRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<Testimonial, System.Guid>
+    public class TestimonialRepository : Framework.Guama.Core.Persistence.ORM.EF.Repositories.Contract.AbstractEntityRepository<Web.Persistence.Entities.Testimonial, System.Guid>
     {
         public TestimonialRepository(DbContext dbContext) : base(dbContext)
         {
         }
 
-        protected override IQueryable<Testimonial> GetQueryableDbSet()
+        protected override System.Linq.IQueryable<Web.Persistence.Entities.Testimonial> GetQueryableDbSet()
         {
-            return base.GetQueryableDbSet().Include(entity => entity.ContextImage);
+            return base.GetQueryableDbSet()
+                .Include(_entity => _entity.ContextImage)
+                .Include(_entity => _entity.RepresentativeImage);
         }
     }
 }

@@ -22,6 +22,106 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.BlogEntry", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("content");
+
+                    b.Property<string>("Context")
+                        .HasColumnType("text")
+                        .HasColumnName("context");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("createdat");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("boolean")
+                        .HasColumnName("enabled");
+
+                    b.Property<Guid?>("FeatureImageId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("featureimageid");
+
+                    b.Property<string>("Label")
+                        .HasColumnType("text")
+                        .HasColumnName("label");
+
+                    b.Property<string>("Summary")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("summary");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("title");
+
+                    b.HasKey("Id")
+                        .HasName("pk_blogentries");
+
+                    b.HasIndex("FeatureImageId")
+                        .HasDatabaseName("ix_blogentries_featureimageid");
+
+                    b.ToTable("blogentries");
+                });
+
+            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.ContactRecord", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("createdat");
+
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("emailaddress");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("text")
+                        .HasColumnName("message");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("name");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("text")
+                        .HasColumnName("phonenumber");
+
+                    b.Property<DateTime?>("ReadAt")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("readat");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("subject");
+
+                    b.HasKey("Id")
+                        .HasName("pk_contactrecords");
+
+                    b.ToTable("contactrecords");
+                });
+
             modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Ilustration", b =>
                 {
                     b.Property<int>("Id")
@@ -41,7 +141,43 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
                     b.ToTable("ilustrations");
                 });
 
-            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Reference", b =>
+            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.PageVisit", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<string>("Carrier")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("carrier");
+
+                    b.Property<string>("Context")
+                        .HasColumnType("text")
+                        .HasColumnName("context");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("createdat");
+
+                    b.Property<string>("NetworkIdentifier")
+                        .HasColumnType("text")
+                        .HasColumnName("networkidentifier");
+
+                    b.Property<int>("PageId")
+                        .HasColumnType("integer")
+                        .HasColumnName("pageid");
+
+                    b.HasKey("Id")
+                        .HasName("pk_pagevisits");
+
+                    b.ToTable("pagevisits");
+                });
+
+            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Partner", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -53,12 +189,45 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
                         .HasColumnName("identityid");
 
                     b.HasKey("Id")
-                        .HasName("pk_references");
+                        .HasName("pk_partners");
 
                     b.HasIndex("IdentityId")
-                        .HasDatabaseName("ix_references_identityid");
+                        .HasDatabaseName("ix_partners_identityid");
 
-                    b.ToTable("references");
+                    b.ToTable("partners");
+                });
+
+            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Representative", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("boolean")
+                        .HasColumnName("enabled");
+
+                    b.Property<Guid>("IdentityId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("identityid");
+
+                    b.Property<string>("Position")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("position");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("integer")
+                        .HasColumnName("priority");
+
+                    b.HasKey("Id")
+                        .HasName("pk_representatives");
+
+                    b.HasIndex("IdentityId")
+                        .HasDatabaseName("ix_representatives_identityid");
+
+                    b.ToTable("representatives");
                 });
 
             modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Service", b =>
@@ -77,10 +246,18 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("enabled");
 
+                    b.Property<Guid>("FeatureImageId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("featureimageid");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("name");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("integer")
+                        .HasColumnName("priority");
 
                     b.Property<string>("Summary")
                         .IsRequired()
@@ -91,7 +268,65 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
                     b.HasKey("Id")
                         .HasName("pk_services");
 
+                    b.HasIndex("FeatureImageId")
+                        .HasDatabaseName("ix_services_featureimageid");
+
                     b.ToTable("services");
+                });
+
+            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Solution", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("At")
+                        .HasColumnType("timestamp without time zone")
+                        .HasColumnName("at");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("description");
+
+                    b.Property<Guid?>("FeatureImageId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("featureimageid");
+
+                    b.Property<Guid>("PartnerId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("partnerid");
+
+                    b.Property<Guid>("ServiceId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("serviceid");
+
+                    b.Property<string>("Summary")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)")
+                        .HasColumnName("summary");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text")
+                        .HasColumnName("title");
+
+                    b.HasKey("Id")
+                        .HasName("pk_solutions");
+
+                    b.HasIndex("FeatureImageId")
+                        .HasDatabaseName("ix_solutions_featureimageid");
+
+                    b.HasIndex("PartnerId")
+                        .HasDatabaseName("ix_solutions_partnerid");
+
+                    b.HasIndex("ServiceId")
+                        .HasDatabaseName("ix_solutions_serviceid");
+
+                    b.ToTable("solutions");
                 });
 
             modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Testimonial", b =>
@@ -109,6 +344,10 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("institutionname");
+
+                    b.Property<Guid>("RepresentativeImageId")
+                        .HasColumnType("uuid")
+                        .HasColumnName("representativeimageid");
 
                     b.Property<string>("RepresentativeName")
                         .IsRequired()
@@ -130,6 +369,9 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
 
                     b.HasIndex("ContextImageId")
                         .HasDatabaseName("ix_testimonials_contextimageid");
+
+                    b.HasIndex("RepresentativeImageId")
+                        .HasDatabaseName("ix_testimonials_representativeimageid");
 
                     b.ToTable("testimonials");
                 });
@@ -1182,6 +1424,16 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
                     b.HasDiscriminator().HasValue("StateLocation");
                 });
 
+            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.BlogEntry", b =>
+                {
+                    b.HasOne("MOROPO.Framework.Guama.Media.Persistence.Entities.Image", "FeatureImage")
+                        .WithMany()
+                        .HasForeignKey("FeatureImageId")
+                        .HasConstraintName("fk_blogentries_images_featureimageid");
+
+                    b.Navigation("FeatureImage");
+                });
+
             modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Ilustration", b =>
                 {
                     b.HasOne("MOROPO.Framework.Guama.Media.Persistence.Entities.Image", "Image")
@@ -1194,16 +1446,68 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
                     b.Navigation("Image");
                 });
 
-            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Reference", b =>
+            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Partner", b =>
                 {
                     b.HasOne("MOROPO.Framework.Guama.Identity.Persistence.Entities.OrganizationIdentity", "Identity")
                         .WithMany()
                         .HasForeignKey("IdentityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_references_organizationidentities_identityid");
+                        .HasConstraintName("fk_partners_organizationidentities_identityid");
 
                     b.Navigation("Identity");
+                });
+
+            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Representative", b =>
+                {
+                    b.HasOne("MOROPO.Framework.Guama.Identity.Persistence.Entities.PersonIdentity", "Identity")
+                        .WithMany()
+                        .HasForeignKey("IdentityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_representatives_personidentities_identityid");
+
+                    b.Navigation("Identity");
+                });
+
+            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Service", b =>
+                {
+                    b.HasOne("MOROPO.Framework.Guama.Media.Persistence.Entities.Image", "FeatureImage")
+                        .WithMany()
+                        .HasForeignKey("FeatureImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_services_images_featureimageid");
+
+                    b.Navigation("FeatureImage");
+                });
+
+            modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Solution", b =>
+                {
+                    b.HasOne("MOROPO.Framework.Guama.Media.Persistence.Entities.Image", "FeatureImage")
+                        .WithMany()
+                        .HasForeignKey("FeatureImageId")
+                        .HasConstraintName("fk_solutions_images_featureimageid");
+
+                    b.HasOne("MOROPO.ASISTEC.Web.Persistence.Entities.Partner", "Partner")
+                        .WithMany()
+                        .HasForeignKey("PartnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_solutions_partners_partnerid");
+
+                    b.HasOne("MOROPO.ASISTEC.Web.Persistence.Entities.Service", "Service")
+                        .WithMany()
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_solutions_services_serviceid");
+
+                    b.Navigation("FeatureImage");
+
+                    b.Navigation("Partner");
+
+                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("MOROPO.ASISTEC.Web.Persistence.Entities.Testimonial", b =>
@@ -1215,7 +1519,16 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
                         .IsRequired()
                         .HasConstraintName("fk_testimonials_images_contextimageid");
 
+                    b.HasOne("MOROPO.Framework.Guama.Media.Persistence.Entities.Image", "RepresentativeImage")
+                        .WithMany()
+                        .HasForeignKey("RepresentativeImageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_testimonials_images_representativeimageid");
+
                     b.Navigation("ContextImage");
+
+                    b.Navigation("RepresentativeImage");
                 });
 
             modelBuilder.Entity("MOROPO.Framework.Guama.Core.Security.Common.Persistence.Entities.RolePermissionBridge", b =>
