@@ -1,4 +1,6 @@
-﻿@{
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Frontend.NewsIndexViewModel
+
+@{
     const string TITLE = "Noticias";
 
     ViewData["Title"] = TITLE;
@@ -52,4 +54,27 @@
             </div>
         }
     </div>
+</section>
+
+<section>
+    @if (Model.BlogEntries.Length < 0)
+    {
+        <p>Sin entradas que mostrar por el momento.</p>
+    }
+    else
+    {
+        foreach (var item in Model.BlogEntries)
+        {
+            <div class="row">
+                @if (item.FeatureImage != null)
+                {
+                    <div class="col-md-4">
+                        <img class="img-flui img-thumbnail" src="~/media/images/@item.FeatureImage.Id.@item.FeatureImage.Extension" />
+                    </div>
+                    <div>
+                    <h2>@item.Title</h2>
+                }
+            </div>
+        }
+    }
 </section>
