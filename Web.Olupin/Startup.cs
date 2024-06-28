@@ -55,6 +55,7 @@ namespace MOROPO.ASISTEC.Web.Olupin
             services.AddScoped<IEntityRepository<PageVisit, long>, PageVisitRepository>();
             services.AddScoped<IEntityRepository<Representative, System.Guid>, RepresentativeRepository>();
             services.AddScoped<IEntityRepository<Solution, int>, SolutionRepository>();
+            services.AddScoped<IEntityRepository<PageVisit, long>, PageVisitRepository>();
 
             services.AddSingleton<Framework.Guama.Core.Persistence.ORM.EF.Helpers.Facade.IDataInitializationHelper, Helpers.DataInitializationHelper>();
 

@@ -28,9 +28,28 @@
     Layout = "_BackendLayout";
 }
 
+@section scripts {
+    <script type="text/javascript" src="~/vendor/ckeditor/ckeditor.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            ClassicEditor
+                .create(document.querySelector('#Description'))
+                .then(editor => {
+                    editor.editing.view.change(writer => {
+                        writer.setStyle('height', '900px', editor.editing.view.document.getRoot());
+                    });
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+    </script>
+}
+
 <hr class="mt-0 mb-4" />
 
-@using (Html.BeginForm("edit", "richtextblocks", new { Area = "site", key = string.Empty }, FormMethod.Post, true, null))
+@using (Html.BeginForm("edit", "textblocks", new { Area = "site", key = string.Empty }, FormMethod.Post, true, null))
 {
     @Html.ValidationSummary(true)
 

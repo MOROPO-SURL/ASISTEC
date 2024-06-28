@@ -15,7 +15,7 @@ namespace MOROPO.ASISTEC.Web.Olupin.Helpers
 
             if (!textBlockDbSet.Any(entity => entity.Id == TextBlockId.HomeHero))
             {
-                textBlockDbSet.Add(new TextBlock { Id = TextBlockId.HomeHero, Title = "Arreglando tu vida", Description = "Gubergren no accumsan illum consetetur hendrerit gubergren consequat voluptua facilisis invidunt ut justo diam duis soluta enim nonumy duis amet" });
+                textBlockDbSet.Add(new TextBlock { Id = TextBlockId.HomeHero, Title = "Arreglando tu vida", Description = "Shun fabled prose amiss ways are fathers to felt which what call in one such a of was in sick thee atonement to ofttimes fame way vulgar in lemans his ofttimes plain of heavenly pomp mirthful delight for bliss parting and he resolved could mote are so crime his would awake tales ways suits his harold could with sight it to unto seek and to like to a sea prose could cheer whence a men aisle his one he of that favour he done sacred muse dote or yet third he apart climes sad tis his none was in that sighed to as for memory another lands full his or had the now gathered not his oer that flaunting still" });
             }
             if (!textBlockDbSet.Any(entity => entity.Id == TextBlockId.HomeAboutSummary))
             {
@@ -49,6 +49,26 @@ namespace MOROPO.ASISTEC.Web.Olupin.Helpers
             if (!textBlockDbSet.Any(entity => entity.Id == TextBlockId.AboutIntro))
             {
                 textBlockDbSet.Add(new TextBlock { Id = TextBlockId.AboutIntro, Title = "Nosotros", Description = "Gubergren no accumsan illum consetetur hendrerit gubergren consequat voluptua facilisis invidunt ut justo diam duis soluta enim nonumy duis amet" });
+            }
+
+            if (!textBlockDbSet.Any(entity => entity.Id == TextBlockId.AboutMission))
+            {
+                textBlockDbSet.Add(new TextBlock { Id = TextBlockId.AboutMission, Title = "Misión", Description = "Gubergren no accumsan illum consetetur hendrerit gubergren consequat voluptua facilisis invidunt ut justo diam duis soluta enim nonumy duis amet" });
+            }
+
+            if (!textBlockDbSet.Any(entity => entity.Id == TextBlockId.AboutVision))
+            {
+                textBlockDbSet.Add(new TextBlock { Id = TextBlockId.AboutVision, Title = "Visión", Description = "Gubergren no accumsan illum consetetur hendrerit gubergren consequat voluptua facilisis invidunt ut justo diam duis soluta enim nonumy duis amet" });
+            }
+
+            if (!textBlockDbSet.Any(entity => entity.Id == TextBlockId.AboutValues))
+            {
+                textBlockDbSet.Add(new TextBlock { Id = TextBlockId.AboutValues, Title = "Valores", Description = "Gubergren no accumsan illum consetetur hendrerit gubergren consequat voluptua facilisis invidunt ut justo diam duis soluta enim nonumy duis amet" });
+            }
+
+            if (!textBlockDbSet.Any(entity => entity.Id == TextBlockId.AboutHistory))
+            {
+                textBlockDbSet.Add(new TextBlock { Id = TextBlockId.AboutHistory, Title = "Historia", Description = "Gubergren no accumsan illum consetetur hendrerit gubergren consequat voluptua facilisis invidunt ut justo diam duis soluta enim nonumy duis amet" });
             }
 
             if (!textBlockDbSet.Any(entity => entity.Id == TextBlockId.ServicesIntro))

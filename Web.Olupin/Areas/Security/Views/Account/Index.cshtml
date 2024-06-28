@@ -11,7 +11,7 @@
     {
         new BreadcrumbViewModel
         {
-            Caption = "<span class=\"mdi mdi-desktop-mac-dashboard\" style=\"margin-right: 4px;\"></span>" + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
+            Caption = "<i class=\"fas fa-fw fa-tachometer-alt\"></i> " + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
             Url = Url.Action("Index", "Dashboard", new { Area = "management" })
         },
         new BreadcrumbViewModel
@@ -90,6 +90,6 @@
 <hr />
 
 <div class="actions">
-    <a asp-action="edit" class="btn btn-light"><span class="mdi mdi-square-edit-outline"></span> Modificar</a>
-    <a asp-action="password" class="btn btn-light"><span class="mdi mdi-key-change"></span> Cambiar Contraseña</a>
+    <a asp-action="edit" class="btn btn-secondary"><span class="mdi mdi-square-edit-outline"></span> Modificar</a>
+    <a asp-action="password" class="btn btn-secondary"><span class="mdi mdi-key-change"></span> Cambiar Contraseña</a>
 </div>
