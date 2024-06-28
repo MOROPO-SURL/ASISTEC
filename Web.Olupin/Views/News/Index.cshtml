@@ -1,9 +1,7 @@
 ﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Frontend.NewsIndexViewModel
 
 @{
-    const string TITLE = "Noticias";
-
-    ViewData["Title"] = TITLE;
+    ViewData["Title"] = Model.IntroTextBlock.Title;
 
     Layout = "_FrontendLayout";
 }
@@ -14,6 +12,7 @@
         #hero-main {
             min-height: 240px;
             background-position: 50% 0;
+            background-size: cover;
             overflow: hidden;
             position: relative;
             display: flex;
@@ -36,6 +35,16 @@
             left: 0;
             right: 0;
         }
+
+        #blog-entries-section a {
+            color: #FF6702;
+        }
+
+        #blog-entries-section a.btn-primary {
+            background-color: #FF6702;
+            border-color: #FF6702;
+            color: white;
+        }
     </style>
 }
 
@@ -56,8 +65,8 @@
     </div>
 </section>
 
-<section>
-    @if (Model.BlogEntries.Length < 0)
+<section id="blog-entries-section" class="container">
+    @if (Model.BlogEntries.Length <= 0)
     {
         <p>Sin entradas que mostrar por el momento.</p>
     }
@@ -65,16 +74,50 @@
     {
         foreach (var item in Model.BlogEntries)
         {
-            <div class="row">
-                @if (item.FeatureImage != null)
-                {
+
+            @if (item.FeatureImage != null)
+            {
+                <hr />
+                <div class="row">
                     <div class="col-md-4">
                         <img class="img-flui img-thumbnail" src="~/media/images/@item.FeatureImage.Id.@item.FeatureImage.Extension" />
                     </div>
-                    <div>
-                    <h2>@item.Title</h2>
-                }
-            </div>
+                    <div class="col-md-8 mb-3 mb-md-0">
+                        <a asp-action="index" asp-route-key="@item.Id"><h2>@item.Title</h2></a>
+                        <p class="text-muted">
+                            @if (!string.IsNullOrEmpty(item.Label))
+                            {
+                                <span>@item.Label | @item.CreatedAt.Date.ToLongDateString()</span>
+                            }
+                            else
+                            {
+                                <span>@item.CreatedAt.Date.ToLongDateString()</span>
+                            }
+                        </p>
+                        <p class="lead mb-3">@item.Summary</p>
+                        <a class="btn btn-primary" asp-action="index" asp-route-key="@item.Id">Leer más</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <hr />
+                <div class="mt-4">
+                    <a asp-action="index" asp-route-key="@item.Id"><h2>@item.Title</h2></a>
+                    <p class="text-muted">
+                        @if (!string.IsNullOrEmpty(item.Label))
+                        {
+                            <span>@item.Label | @item.CreatedAt.Date.ToLongDateString()</span>
+                        }
+                        else
+                        {
+                            <span>@item.CreatedAt.Date.ToLongDateString()</span>
+                        }
+                    </p>
+                    <p class="lead mb-3">@item.Summary</p>
+                    <a class="btn btn-primary" asp-action="index" asp-route-key="@item.Id">Leer más</a>
+                </div>
+            }
         }
     }
 </section>

@@ -1,7 +1,7 @@
-﻿@{
-    const string TITLE = "Contacto";
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Frontend.ContactIndexViewModel
 
-    ViewData["Title"] = TITLE;
+@{
+    ViewData["Title"] = Model.IntroTextBlock.Title;
 
     Layout = "_FrontendLayout";
 }
@@ -13,13 +13,17 @@
     <style type="text/css">
         #hero-main {
             min-height: 240px;
-            background-image: url('/media/images/website.s_cover_default_image.jpg');
             background-position: 50% 0;
+            background-size: cover;
             overflow: hidden;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            @if (Model.HeaderIlustration != null)
+            {
+                @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.HeaderIlustration.Image.Id, Model.HeaderIlustration.Image.Extension))
+            }
         }
 
         #hero-main-vintage {
@@ -62,12 +66,14 @@
     <div id="hero-main-vintage" class="hero-fullsize-child hero-common-vintage"></div>
 </section>
 
-<div class="container">
-    <h1 class="display-3 font-weight-normal mb-4">@TITLE</h1>
-</div>
-
 <section class="container">
-    <p class="lead mb-5">¿Deseas conocer más sobre nuestros servicios? ¡Contáctanos! Nos encantará conversar contigo.</p>
+    <h1 class="display-3 font-weight-normal mb-4">@Model.IntroTextBlock.Title</h1>
+    @if (!string.IsNullOrEmpty(Model.IntroTextBlock.Description))
+    {
+        <div class="mb-5">
+            @Html.Raw(Model.IntroTextBlock.Description)
+        </div>
+    }
 
     <div class="row">
         <div class="col-sm-6">
@@ -117,7 +123,7 @@
                     <div class="row no-gutters">
                         <div class="col-auto">
                             <span class="fas fa-fw fa-envelope"></span>
-                        </div> 
+                        </div>
                         <div class="col ml-1">
                             <a href="mailto:contacto@asistec.cu" class="text-dark">contacto@asistec.cu</a>
                         </div>

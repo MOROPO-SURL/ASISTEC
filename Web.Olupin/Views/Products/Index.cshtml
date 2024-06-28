@@ -1,4 +1,6 @@
-﻿@{
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Frontend.ProductsIndexViewModel
+
+@{
     ViewData["Title"] = Model.IntroTextBlock.Title;
 
     Layout = "_FrontendLayout";
@@ -10,6 +12,7 @@
         #hero-main {
             min-height: 240px;
             background-position: 50% 0;
+            background-size: cover;
             overflow: hidden;
             position: relative;
             display: flex;
@@ -49,5 +52,63 @@
                 @Html.Raw(Model.IntroTextBlock.Description)
             </div>
         }
+    </div>
+</section>
+
+<section class="container">
+    @if (Model.StoreThumbnailMainIlustration != null)
+    {
+        <img class="img-fluid img-thumbnail mb-4" src="~/media/images/@Model.StoreThumbnailMainIlustration.Image.Id.@Model.StoreThumbnailMainIlustration.Image.Extension" />
+    }
+    <div class="row">
+        <div class="col-sm-6">
+            @if (Model.StoreThumbnailSecoundaryIlustration != null)
+            {
+                <img class="img-fluid img-thumbnail" src="~/media/images/@Model.StoreThumbnailSecoundaryIlustration.Image.Id.@Model.StoreThumbnailSecoundaryIlustration.Image.Extension" />
+            }
+        </div>
+        <div class="col-sm-6">
+            @if (Model.StoreThumbnailThirtearyIlustration != null)
+            {
+                <img class="img-fluid img-thumbnail" src="~/media/images/@Model.StoreThumbnailThirtearyIlustration.Image.Id.@Model.StoreThumbnailThirtearyIlustration.Image.Extension" />
+            }
+        </div>
+    </div>
+    <div class="text-center mt-4 mb-5">
+        <a class="btn btn-success" href="https://tienda.asistec.moropo.cu" target="_blank"><i class="fas faw fa-shopping-bag mr-1"></i> Visitar la Tienda</a>
+    </div>
+</section>
+
+<section class="bg-white">
+    <div class="container">
+        <div class="text-center pt-5 pb-4">
+            <h1 class="font-weight-bold">Productos más vendidos</h1>
+            <p>Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <p class="lead text-muted">Sin elementos que mostrar por el momento.</p>
+    </div>
+
+    <div class="text-center pt-4 pb-5">
+        <a class="btn btn-success" href="https://tienda.asistec.moropo.cu" target="_blank"><i class="fas faw fa-shopping-bag mr-1"></i> Visitar la Tienda</a>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="text-center pt-5 pb-4">
+            <h1 class="font-weight-bold">Nuesvas incorporaciones</h1>
+            <p>Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <p class="lead text-muted">Sin elementos que mostrar por el momento.</p>
+    </div>
+
+    <div class="text-center pt-4 pb-5">
+        <a class="btn btn-success" href="https://tienda.asistec.moropo.cu" target="_blank"><i class="fas faw fa-shopping-bag mr-1"></i> Visitar la Tienda</a>
     </div>
 </section>

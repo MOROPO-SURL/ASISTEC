@@ -13,6 +13,9 @@
         AboutHistory = 25,
         ServicesHeader = 40,
         ProductsHeader = 60,
+        ProductsStoreThumbnailMain = 61,
+        ProductsStoreThumbnailSecoundary = 62,
+        ProductsStoreThumbnailThirtheary = 63,
         SolutionsHeader = 70,
         NewsHeader = 80,
         ContactHeader = 90

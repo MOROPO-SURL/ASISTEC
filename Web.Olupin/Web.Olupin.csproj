@@ -8,6 +8,8 @@
 		<RootNamespace>MOROPO.ASISTEC.Web.Olupin</RootNamespace>
 	</PropertyGroup>
 
+	<PropertyGroup Condition=" '$(RunConfiguration)' == 'Kestrel (Development)' " />
+	<PropertyGroup Condition=" '$(RunConfiguration)' == 'Kestrel (Staging)' " />
 	<ItemGroup>
 		<Compile Remove="dpkeys\**" />
 		<Compile Remove="logs\**" />

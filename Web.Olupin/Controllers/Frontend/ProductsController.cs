@@ -1,4 +1,5 @@
-﻿using MOROPO.ASISTEC.Web.Olupin.Models.View;
+﻿using System.Linq;
+using MOROPO.ASISTEC.Web.Olupin.Models.View;
 using MOROPO.ASISTEC.Web.Persistence.Entities;
 using MOROPO.ASISTEC.Web.Persistence.Enumerations;
 using MOROPO.Framework.Guama.Core.Persistence.Repositories;
@@ -28,9 +29,18 @@ namespace MOROPO.ASISTEC.Web.Olupin.Controllers.Frontend
                 NetworkIdentifier = Request.Headers.Host
             }, "system");
 
-            var headerIlustration = ilustrationRepository.FindOneBy(_entity => _entity.Id == IlustrationId.ProductsHeader);
+            var ilustrations = ilustrationRepository.FindBy(_entity =>
+                _entity.Id == IlustrationId.ProductsHeader ||
+                _entity.Id == IlustrationId.ProductsStoreThumbnailMain ||
+                _entity.Id == IlustrationId.ProductsStoreThumbnailSecoundary ||
+                _entity.Id == IlustrationId.ProductsStoreThumbnailThirtheary);
 
-            var model = new Models.View.Frontend.ContactIndexViewModel
+            var headerIlustration = ilustrations.FirstOrDefault(_entity => _entity.Id == IlustrationId.ProductsHeader);
+            var storeThumbnailMain = ilustrations.FirstOrDefault(_entity => _entity.Id == IlustrationId.ProductsStoreThumbnailMain);
+            var storeThumbnailSecoundary = ilustrations.FirstOrDefault(_entity => _entity.Id == IlustrationId.ProductsStoreThumbnailSecoundary);
+            var storeThumbnailThirtheary = ilustrations.FirstOrDefault(_entity => _entity.Id == IlustrationId.ProductsStoreThumbnailThirtheary);
+
+            var model = new Models.View.Frontend.ProductsIndexViewModel
             {
                 IntroTextBlock = new TextBlockDisplayViewModel()
             };
@@ -42,6 +52,27 @@ namespace MOROPO.ASISTEC.Web.Olupin.Controllers.Frontend
                 model.HeaderIlustration = new IlustrationDisplayViewModel();
 
                 model.HeaderIlustration.Import(headerIlustration);
+            }
+
+            if (storeThumbnailMain != null)
+            {
+                model.StoreThumbnailMainIlustration = new IlustrationDisplayViewModel();
+
+                model.StoreThumbnailMainIlustration.Import(storeThumbnailMain);
+            }
+
+            if (storeThumbnailSecoundary != null)
+            {
+                model.StoreThumbnailSecoundaryIlustration = new IlustrationDisplayViewModel();
+
+                model.StoreThumbnailSecoundaryIlustration.Import(storeThumbnailSecoundary);
+            }
+
+            if (storeThumbnailThirtheary != null)
+            {
+                model.StoreThumbnailThirtearyIlustration = new IlustrationDisplayViewModel();
+
+                model.StoreThumbnailThirtearyIlustration.Import(storeThumbnailThirtheary);
             }
 
             return View(model);
