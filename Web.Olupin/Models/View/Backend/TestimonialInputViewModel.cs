@@ -38,6 +38,7 @@ namespace MOROPO.ASISTEC.Web.Olupin.Models.View.Backend
         public string RepresentativeImageExtension { get; set; }
 
         [Required(ErrorMessage = "RequiredValidationErrorMessage")]
+        [MaxLength(255)]
         [Display(Name = "Review")]
         public string Review { get; set; }
 
