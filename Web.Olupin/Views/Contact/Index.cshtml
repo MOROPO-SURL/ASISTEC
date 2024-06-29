@@ -74,24 +74,44 @@
             @Html.Raw(Model.IntroTextBlock.Description)
         </div>
     }
+    @{
+        var notificationEntries = TempData.Where(x => x.Key.EndsWith("-notification")).ToArray();
 
+        foreach (var extraNotificationEntry in notificationEntries)
+        {
+            var notification = JsonConvert.DeserializeObject<NotificationViewModel>(extraNotificationEntry.Value.ToString());
+
+            <div class="alert alert-dismissible fade show alert-@Html.Raw(notification.Type.ToString().ToLower()) mb-5">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                @if (notification.Title != null)
+                {
+                    <h4>@GlobalViewLocalizationHelper.Localize(notification.Title, ViewLocalizer)</h4>
+                }
+
+                @if (notification.Message != null)
+                {
+                    @Html.Raw(GlobalViewLocalizationHelper.Localize(notification.Message, ViewLocalizer))
+                    ;
+                }
+
+                @if (notification.Messages != null)
+                {
+                    <ul>
+                        @foreach (var item in notification.Messages)
+                        {
+                            <li>@GlobalViewLocalizationHelper.Localize(item, ViewLocalizer)</li>
+                        }
+                    </ul>
+                }
+            </div>
+        }
+    }
     <div class="row">
         <div class="col-sm-6">
             <h2>Envíanos un mensaje</h2>
-            <form>
-                <label>Tu nombre:</label>
-                <input type="text" name="name" class="form-control mb-3" />
-                <label>Tu correo electrónico:</label>
-                <input type="email" name="email" class="form-control mb-3" />
-                <label>Tu número de teléfono (opcional):</label>
-                <input type="tel" name="phone" class="form-control mb-3" />
-                <label>Asunto:</label>
-                <input type="text" name="subject" class="form-control mb-3" />
-                <label>Mensaje:</label>
-                <textarea name="message" rows="8" class="form-control mb-3"></textarea>
-
-                <input type="submit" class="btn btn-primary" value="ENVIAR" />
-            </form>
+            <partial name="_CreateContactRecordPartial" model="new MOROPO.ASISTEC.Web.Olupin.Models.View.ContactRecordInputViewModel()" />
         </div>
         <div class="col-sm-6">
             <h2 class="mb-3">Dónde encontrarnos?</h2>

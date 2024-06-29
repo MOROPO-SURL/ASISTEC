@@ -1,0 +1,26 @@
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.ContactRecordInputViewModel
+
+<form method="post" asp-action="contact" asp-controller="contact" asp-antiforgery="true">
+    <div class="mb-3">
+        @Html.LabelFor(model => model.Name)
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(model => model.EmailAddress)
+        @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(model => model.PhoneNumber)
+        @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(model => model.Subject)
+        @Html.TextBoxFor(model => model.Subject, new { @class = "form-control" })
+    </div>
+    <div class="mb-3">
+        @Html.LabelFor(model => model.Message, "Mensaje (opcional)")
+        @Html.TextAreaFor(model => model.Message, 8, 1, new { @class = "form-control" })
+    </div>
+    <hr class="my-4" />
+    <button type="submit" class="btn btn-success"><i class="fas fa-fw fa-paper-plane mr-1"></i>Enviar</button>
+</form>
