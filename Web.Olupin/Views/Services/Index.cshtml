@@ -70,7 +70,7 @@
 <div id="services-sections">
     @foreach (var item in Model.Sections)
     {
-        var sectionCssClass = isWhiteSectionTurn ? "py-5" : "py-5 bg-white";
+        var sectionCssClass = isWhiteSectionTurn ? "py-5 bg-white" : "py-5";
 
         isWhiteSectionTurn = !isWhiteSectionTurn;
 
@@ -80,6 +80,8 @@
                 <hr />
                 <img class="w-50 float-right img-thumbnail ml-md-3 mb-3" src="~/media/images/@item.Key.FeatureImage.Id.@item.Key.FeatureImage.Extension" />
                 @Html.Raw(item.Key.Description)
+
+                <div class="clearfix"></div>
 
                 @if (item.Value.Length > 0)
                 {

@@ -20,17 +20,17 @@
         #hero-main {
             min-height: 720px;
             @if (Model.HeroIlustration != null)
-                {
+            {
                 @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.HeroIlustration.Image.Id, Model.HeroIlustration.Image.Extension))
-                }
+            }
         }
 
         #hero-feature {
             min-height: 720px;
             @if (Model.MainPromoIlustration != null)
-                {
+            {
                 @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.MainPromoIlustration.Image.Id, Model.MainPromoIlustration.Image.Extension))
-                }
+            }
         }
 
         .hero-fullsize-child {
@@ -79,19 +79,19 @@
             background-position: 50% 50%;
             background-size: cover;
             background-repeat: no-repeat;
-            min-height: 360px;
+            min-height: 420px;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .carousel-indicators > li {
             height: 8px;
         }
 
-        .carousel-caption {
+        .testimonial-carousel-caption {
+            align-self: center;
             background-color: rgba(255, 255,255, 0.85);
-        }
-
-        .carousel-caption * {
-            color: black;
         }
     </style>
 }
@@ -101,8 +101,11 @@
     <div id="hero-main-vintage" class="hero-fullsize-child hero-common-vintage"></div>
     <div class="container pb-5" style="z-index: 1000;">
         <div class="jumbotron text-white text-center mb-0" style="background: none;">
-            <h1 class="display-3">Arreglando tu vida</h1>
-            <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+            <h1 class="display-3">@Model.HeroTextBlock.Title</h1>
+            @if (!string.IsNullOrEmpty(Model.HeroTextBlock.Description))
+            {
+                <p class="lead">@Model.HeroTextBlock.Description</p>
+            }
             <a class="btn btn-primary" href="/contact">Contactar</a>
         </div>
     </div>
@@ -112,16 +115,19 @@
     <div class="row pt-5">
         <div class="col-md-6"">
             <div class="jumbotron mb-0" style="background: none;">
-                <h1 class="display-4 font-weight-bold">ASISTEC S.R.L.</h1>
-                <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
-                <a class="btn btn-primary mt-4" href="/about">Conocer más</a>
+                <h1 class="display-4 font-weight-bold">@Model.AboutSummaryTextBlock.Title</h1>
+                @if (!string.IsNullOrEmpty(Model.AboutSummaryTextBlock.Description))
+                {
+                    <p class="lead">@Model.AboutSummaryTextBlock.Description</p>
+                }
+                <a class="btn btn-primary mt-4" asp-action="index" asp-controller="contact">Conocer más</a>
             </div>
         </div>
         <div class="col-md-6">
             @if (Model.AboutSummaryIlustration != null)
-                {
+            {
                 <img class="img-fluid img-thumbnail" title="ASISTEC S.R.L." src="/media/images/@Model.AboutSummaryIlustration.Image.Id.@Model.AboutSummaryIlustration.Image.Extension" />
-                }
+            }
         </div>
     </div>
 </section>
@@ -131,8 +137,11 @@
     <div id="hero-feature-vintage" class="hero-fullsize-child hero-common-vintage"></div>
     <div class="container pt-5" style="z-index: 1000;">
         <div class="jumbotron text-white text-center mb-0" style="background: none;">
-            <h1 class="display-3">Refresca tu vida con calidad y estilo</h1>
-            <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+            <h1 class="display-3 mt-5">@Model.MainPromoTextBlock.Title</h1>
+            @if (!string.IsNullOrEmpty(Model.MainPromoTextBlock.Description))
+            {
+                <p class="lead">@Model.MainPromoTextBlock.Description</p>
+            }
             <a class="btn btn-primary" href="/contact">Contactar</a>
         </div>
     </div>
@@ -141,8 +150,11 @@
 <section id="section-service-lines" class="mb-5">
     <div class="container">
         <div class="text-center text-white pt-5 pb-4">
-            <h1 class="display-4 font-weight-bold">Nuestras líneas de servicio</h1>
-            <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+            <h1 class="display-4 font-weight-bold">@Model.ServicesHeaderTextBlock.Title</h1>
+            @if (!string.IsNullOrEmpty(Model.ServicesHeaderTextBlock.Description))
+            {
+                <p class="lead">@Model.ServicesHeaderTextBlock.Description</p>
+            }
         </div>
         <div class="card-deck">
             @foreach (var item in Model.Services)
@@ -166,8 +178,11 @@
 <section class="bg-white pb-5">
     <div class="container">
         <div class="text-center pt-5 pb-4">
-            <h1 class="display-4 font-weight-bold">Nuestros productos</h1>
-            <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+            <h1 class="display-4 font-weight-bold">@Model.ProductsHeaderTextBlock.Title</h1>
+            @if (!string.IsNullOrEmpty(Model.ProductsHeaderTextBlock.Description))
+            {
+                <p class="lead">@Model.ProductsHeaderTextBlock.Description</p>
+            }
         </div>
     </div>
 
@@ -182,8 +197,11 @@
 
 <div class="container">
     <div class="text-center pt-5 pb-4">
-        <h1 class="display-5 font-weight-bold">Nuestras referencias</h1>
-        <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+        <h1 class="display-5 font-weight-bold">@Model.TestimonialsHeaderTextBlock.Title</h1>
+        @if (!string.IsNullOrEmpty(Model.TestimonialsHeaderTextBlock.Description))
+        {
+            <p class="lead">@Model.TestimonialsHeaderTextBlock.Description</p>
+        }
     </div>
 </div>
 
@@ -225,11 +243,20 @@
                     isFirstRendered = true;
 
                     <div id="testimonial-item-@item.Id" class="carousel-item active testimonial-carousel-item" style="background-image: url('/media/images/@item.ContextImage.Id.@item.ContextImage.Extension');">
-                        <div class="carousel-caption p-3">
-                            <h4>@item.RepresentativeName</h4>
-                            <p class="text-muted">@item.RepresentativePosition</p>
-                            <h5>@item.InstitutionName</h5>
-                            <p>@item.Review</p>
+                        <div class="testimonial-carousel-caption m-4 p-3">
+                            <div class="row">
+                                <div class="col-auto">
+                                    <img class="img-fluid img-thumbnail rounded-circle" style="width: 160px;" src="~/media/images/@item.RepresentativeImage.Id.@item.RepresentativeImage.Extension" />
+                                </div>
+                                <div class="col" style="max-width: 540px;">
+                                    <h4>@item.RepresentativeName</h4>
+                                    <h5>@item.InstitutionName</h5>
+                                    <p class="text-muted">@item.RepresentativePosition</p>
+                                    <p>@item.Review</p>
+                                </div>
+                            </div>
+
+                            
                         </div>
                     </div>
                 }
@@ -238,19 +265,22 @@
     </div>
     <button class="carousel-control-prev" type="button" data-target="#testimonials-carousel" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only">Anterior</span>
     </button>
     <button class="carousel-control-next" type="button" data-target="#testimonials-carousel" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">Siguiente</span>
     </button>
 </div>
 
 <section class="bg-white">
     <div class="container">
         <div class="text-center pt-5 pb-4">
-            <h1 class="display-5 font-weight-bold">Nuestros socios</h1>
-            <p class="lead">Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+            <h1 class="display-5 font-weight-bold">@Model.PartnersHeaderTextBlock.Title</h1>
+            @if (!string.IsNullOrEmpty(Model.PartnersHeaderTextBlock.Description))
+            {
+                <p class="lead">@Model.PartnersHeaderTextBlock.Description</p>
+            }
         </div>
     </div>
 
@@ -263,8 +293,11 @@
     <div class="container pb-5">
         <div class="row align-items-center">
             <div class="col-md-6 col-sm-9 text-white">
-                <h2>Call to action title</h2>
-                <p class="mb-0">Though climes days riot other for could ways the at than what now soon waste pangs before lyres and deemed</p>
+                <h2>@Model.CallToActionTextBlock.Title</h2>
+                @if (!string.IsNullOrEmpty(Model.CallToActionTextBlock.Description))
+                {
+                    <p class="mb-0">@Model.CallToActionTextBlock.Description</p>
+                }
             </div>
             <div class="col-md-6 col-sm-3 text-right">
                 <a class="btn btn-primary text-uppercase" href="/contact">Contáctanos</a>
