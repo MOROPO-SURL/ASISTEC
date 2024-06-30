@@ -62,7 +62,7 @@
                 {
                     <div class="col-md-6 mb-3">
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-4 mb-3">
                                 @if (item.Image != null)
                                 {
                                     <img class="img-thumbnail img-fluid rounded-circle" src="~/media/images/@item.Image.Id.@item.Image.Extension" />
@@ -96,7 +96,7 @@
         else
         {
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-3">
                     <h1 class="mb-4">@Model.MissionTextBlock.Title</h1>
 
                     <div>@Html.Raw(Model.MissionTextBlock.Description)</div>
@@ -120,7 +120,7 @@
         else
         {
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-3">
                     <img class="img-fluid" src="~/media/images/@Model.VisionIlustration.Image.Id.@Model.VisionIlustration.Image.Extension" />
                 </div>
                 <div class="col-md-6">
@@ -144,7 +144,7 @@
         else
         {
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-3">
                     <h1 class="mb-4">@Model.ValuesTextBlock.Title</h1>
 
                     <div>@Html.Raw(Model.ValuesTextBlock.Description)</div>
@@ -168,7 +168,7 @@
         else
         {
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-3">
                     <img class="img-fluid" src="~/media/images/@Model.HistoryIlustration.Image.Id.@Model.HistoryIlustration.Image.Extension" />
                 </div>
                 <div class="col-md-6">
