@@ -79,8 +79,6 @@ namespace MOROPO.ASISTEC.Web.Olupin
             services.AddSingleton<Framework.Guama.Core.Presentation.Web.Common.ModelBinding.Contract.IConcretModelBindHelper, Helpers.ConcretModelBindHelper>();
 
             services.AddScoped<Framework.Guama.Core.Presentation.Web.Security.Managers.Facade.IUserProfileManagerFacade, Managers.UserProfileManager>();
-
-            services.AddSingleton<Framework.Guama.Core.Presentation.Web.Security.Providers.Facade.IRoleIdProviderFacade>(Framework.Guama.Core.Security.Common.Presentation.Web.Frontend.Providers.RoleMemoryProvider.Instance);
             #endregion
 
             #region Globalization configuration
@@ -124,7 +122,7 @@ namespace MOROPO.ASISTEC.Web.Olupin
             services.AddSingleton<Microsoft.AspNetCore.Mvc.ViewFeatures.ITempDataProvider, Microsoft.AspNetCore.Mvc.ViewFeatures.CookieTempDataProvider>();
         }
 
-        public void Configure(IApplicationBuilder app, Microsoft.Extensions.Options.IOptions<RequestLocalizationOptions> requestLocalizationOptions, Microsoft.Extensions.Logging.ILoggerFactory loggerFactory, DbContext dbContext)
+        public void Configure(IApplicationBuilder app, Microsoft.Extensions.Options.IOptions<RequestLocalizationOptions> requestLocalizationOptions, Microsoft.Extensions.Logging.ILoggerFactory loggerFactory, DbContext dbContext, Framework.Guama.Core.Presentation.Web.Security.Managers.Facade.IRoleMemoryManagerFacade roleMemoryManager)
         {
             loggerFactory.AddSerilog(Log.Logger);
 
@@ -174,7 +172,7 @@ namespace MOROPO.ASISTEC.Web.Olupin
 
             foreach (var item in atStartUpRoles)
             {
-                Framework.Guama.Core.Security.Common.Presentation.Web.Frontend.Providers.RoleMemoryProvider.Instance.Roles.Add(item);
+                roleMemoryManager.RememberRole(item);
             }
 
             app.UseStaticFiles();
