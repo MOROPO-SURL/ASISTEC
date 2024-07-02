@@ -81,6 +81,16 @@ namespace MOROPO.ASISTEC.Web.Olupin.Helpers
                 textBlockDbSet.Add(new TextBlock { Id = TextBlockId.ProductsIntro, Title = "Productos", Description = "Gubergren no accumsan illum consetetur hendrerit gubergren consequat voluptua facilisis invidunt ut justo diam duis soluta enim nonumy duis amet" });
             }
 
+            if (!textBlockDbSet.Any(entity => entity.Id == TextBlockId.ProductsBestSellersHeader))
+            {
+                textBlockDbSet.Add(new TextBlock { Id = TextBlockId.ProductsBestSellersHeader, Title = "Productos más vendidos", Description = "Gubergren no accumsan illum consetetur hendrerit gubergren consequat voluptua facilisis invidunt ut justo diam duis soluta enim nonumy duis amet" });
+            }
+
+            if (!textBlockDbSet.Any(entity => entity.Id == TextBlockId.ProductsLastOnesHeader))
+            {
+                textBlockDbSet.Add(new TextBlock { Id = TextBlockId.ProductsLastOnesHeader, Title = "Nuesvas incorporaciones", Description = "Gubergren no accumsan illum consetetur hendrerit gubergren consequat voluptua facilisis invidunt ut justo diam duis soluta enim nonumy duis amet" });
+            }
+
             if (!textBlockDbSet.Any(entity => entity.Id == TextBlockId.SolutionsIntro))
             {
                 textBlockDbSet.Add(new TextBlock { Id = TextBlockId.SolutionsIntro, Title = "Soluciones", Description = "Gubergren no accumsan illum consetetur hendrerit gubergren consequat voluptua facilisis invidunt ut justo diam duis soluta enim nonumy duis amet" });

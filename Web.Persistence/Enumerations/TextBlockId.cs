@@ -17,6 +17,8 @@
         AboutHistory = 24,
         ServicesIntro = 40,
         ProductsIntro = 60,
+        ProductsBestSellersHeader = 61,
+        ProductsLastOnesHeader = 62,
         SolutionsIntro = 70,
         NewsIntro = 80,
         ContactIntro = 90
