@@ -21,7 +21,7 @@
             min-height: 720px;
             @if (Model.HeroIlustration != null)
             {
-                @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.HeroIlustration.Image.Id, Model.HeroIlustration.Image.Extension))
+                @Html.Raw(string.Format("background-blend-mode: overlay; background-color: rgba(0,0,0,0.5); background-image: url('/media/images/{0}.{1}');", Model.HeroIlustration.Image.Id, Model.HeroIlustration.Image.Extension))
             }
         }
 
@@ -29,7 +29,7 @@
             min-height: 720px;
             @if (Model.MainPromoIlustration != null)
             {
-                @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.MainPromoIlustration.Image.Id, Model.MainPromoIlustration.Image.Extension))
+                @Html.Raw(string.Format("background-blend-mode: overlay; background-color: rgba(0,0,0,0.5); background-image: url('/media/images/{0}.{1}');", Model.MainPromoIlustration.Image.Id, Model.MainPromoIlustration.Image.Extension))
             }
         }
 
@@ -104,7 +104,7 @@
             <h1 class="display-3">@Model.HeroTextBlock.Title</h1>
             @if (!string.IsNullOrEmpty(Model.HeroTextBlock.Description))
             {
-                <p class="lead">@Model.HeroTextBlock.Description</p>
+                <p class="lead">@Html.Raw(Model.HeroTextBlock.Description)</p>
             }
             <a class="btn btn-primary" href="/contact">Contactar</a>
         </div>
@@ -118,7 +118,7 @@
                 <h1 class="display-4 font-weight-bold">@Model.AboutSummaryTextBlock.Title</h1>
                 @if (!string.IsNullOrEmpty(Model.AboutSummaryTextBlock.Description))
                 {
-                    <p class="lead">@Model.AboutSummaryTextBlock.Description</p>
+                    <p class="lead">@Html.Raw(Model.AboutSummaryTextBlock.Description)</p>
                 }
                 <a class="btn btn-primary mt-4" asp-action="index" asp-controller="contact">Conocer más</a>
             </div>
@@ -140,7 +140,7 @@
             <h1 class="display-3 mt-5">@Model.MainPromoTextBlock.Title</h1>
             @if (!string.IsNullOrEmpty(Model.MainPromoTextBlock.Description))
             {
-                <p class="lead">@Model.MainPromoTextBlock.Description</p>
+                <p class="lead">@Html.Raw(Model.MainPromoTextBlock.Description)</p>
             }
             <a class="btn btn-primary" href="/contact">Contactar</a>
         </div>
@@ -149,11 +149,11 @@
 
 <section id="section-service-lines" class="mb-5">
     <div class="container">
-        <div class="text-center text-white pt-5 pb-4">
+        <div class="text-center text-black pt-5 pb-4">
             <h1 class="display-4 font-weight-bold">@Model.ServicesHeaderTextBlock.Title</h1>
             @if (!string.IsNullOrEmpty(Model.ServicesHeaderTextBlock.Description))
             {
-                <p class="lead">@Model.ServicesHeaderTextBlock.Description</p>
+                <p class="lead">@Html.Raw(Model.ServicesHeaderTextBlock.Description)</p>
             }
         </div>
         <div class="card-deck">
@@ -181,7 +181,7 @@
             <h1 class="display-4 font-weight-bold">@Model.ProductsHeaderTextBlock.Title</h1>
             @if (!string.IsNullOrEmpty(Model.ProductsHeaderTextBlock.Description))
             {
-                <p class="lead">@Model.ProductsHeaderTextBlock.Description</p>
+                <p class="lead">@Html.Raw(Model.ProductsHeaderTextBlock.Description)</p>
             }
         </div>
     </div>
@@ -200,7 +200,7 @@
         <h1 class="display-5 font-weight-bold">@Model.TestimonialsHeaderTextBlock.Title</h1>
         @if (!string.IsNullOrEmpty(Model.TestimonialsHeaderTextBlock.Description))
         {
-            <p class="lead">@Model.TestimonialsHeaderTextBlock.Description</p>
+            <p class="lead">@Html.Raw(Model.TestimonialsHeaderTextBlock.Description)</p>
         }
     </div>
 </div>
@@ -279,7 +279,7 @@
             <h1 class="display-5 font-weight-bold">@Model.PartnersHeaderTextBlock.Title</h1>
             @if (!string.IsNullOrEmpty(Model.PartnersHeaderTextBlock.Description))
             {
-                <p class="lead">@Model.PartnersHeaderTextBlock.Description</p>
+                <p class="lead">@Html.Raw(Model.PartnersHeaderTextBlock.Description)</p>
             }
         </div>
     </div>
@@ -296,7 +296,7 @@
                 <h2>@Model.CallToActionTextBlock.Title</h2>
                 @if (!string.IsNullOrEmpty(Model.CallToActionTextBlock.Description))
                 {
-                    <p class="mb-0">@Model.CallToActionTextBlock.Description</p>
+                    <p class="mb-0">@Html.Raw(Model.CallToActionTextBlock.Description)</p>
                 }
             </div>
             <div class="col-md-6 col-sm-3 text-right">

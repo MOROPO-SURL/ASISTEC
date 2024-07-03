@@ -82,8 +82,11 @@
 <section class="bg-white">
     <div class="container">
         <div class="text-center pt-5 pb-4">
-            <h1 class="font-weight-bold">Productos más vendidos</h1>
-            <p>Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+            <h1 class="font-weight-bold">@Model.BestSellersHeader.Title</h1>
+            @if (!string.IsNullOrEmpty(Model.BestSellersHeader.Description))
+            {
+                <div>@Html.Raw(Model.BestSellersHeader.Description)</div>
+            }
         </div>
     </div>
 
@@ -99,8 +102,11 @@
 <section>
     <div class="container">
         <div class="text-center pt-5 pb-4">
-            <h1 class="font-weight-bold">Nuesvas incorporaciones</h1>
-            <p>Who thee this but sighed sore the for where were plain deemed it dwelt pollution fabled woe womans deemed which yet pomp uses sins ive go fabled childe begun shell was in but than yea seemed been gild for dear mine heartless rake lemans nor in stalked his glee to</p>
+            <h1 class="font-weight-bold">@Model.ProductsLastOnesHeader.Title</h1>
+            @if (!string.IsNullOrEmpty(Model.ProductsLastOnesHeader.Description))
+            {
+                <div>@Html.Raw(Model.ProductsLastOnesHeader.Description)</div>
+            }
         </div>
     </div>
 

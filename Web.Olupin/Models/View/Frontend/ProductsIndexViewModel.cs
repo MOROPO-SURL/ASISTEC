@@ -11,5 +11,9 @@
         public IlustrationDisplayViewModel StoreThumbnailThirtearyIlustration { get; set; }
 
         public TextBlockDisplayViewModel IntroTextBlock { get; set; }
+
+        public TextBlockDisplayViewModel BestSellersHeader { get; set; }
+
+        public TextBlockDisplayViewModel ProductsLastOnesHeader { get; set; }
     }
 }

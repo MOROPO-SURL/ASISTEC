@@ -40,12 +40,21 @@ namespace MOROPO.ASISTEC.Web.Olupin.Controllers.Frontend
             var storeThumbnailSecoundary = ilustrations.FirstOrDefault(_entity => _entity.Id == IlustrationId.ProductsStoreThumbnailSecoundary);
             var storeThumbnailThirtheary = ilustrations.FirstOrDefault(_entity => _entity.Id == IlustrationId.ProductsStoreThumbnailThirtheary);
 
+            var textBlocks = textBlockRepository.FindBy(_entity =>
+                _entity.Id == TextBlockId.ProductsIntro ||
+                _entity.Id == TextBlockId.ProductsBestSellersHeader ||
+                _entity.Id == TextBlockId.ProductsLastOnesHeader);
+
             var model = new Models.View.Frontend.ProductsIndexViewModel
             {
-                IntroTextBlock = new TextBlockDisplayViewModel()
+                IntroTextBlock = new TextBlockDisplayViewModel(),
+                BestSellersHeader = new TextBlockDisplayViewModel(),
+                ProductsLastOnesHeader = new TextBlockDisplayViewModel()
             };
 
-            model.IntroTextBlock.Import(textBlockRepository.Get(TextBlockId.ProductsIntro));
+            model.IntroTextBlock.Import(textBlocks.First(_entity => _entity.Id == TextBlockId.ProductsIntro));
+            model.BestSellersHeader.Import(textBlocks.First(_entity => _entity.Id == TextBlockId.ProductsBestSellersHeader));
+            model.ProductsLastOnesHeader.Import(textBlocks.First(_entity => _entity.Id == TextBlockId.ProductsLastOnesHeader));
 
             if (headerIlustration != null)
             {
