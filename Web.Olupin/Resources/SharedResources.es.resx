@@ -117,14 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AboutHistory" xml:space="preserve">
+    <value>AcercadeHistoria</value>
+  </data>
+  <data name="AboutIntro" xml:space="preserve">
+    <value>AcercadeIntroducción</value>
+  </data>
+  <data name="AboutMission" xml:space="preserve">
+    <value>AcercadeMisión</value>
+  </data>
+  <data name="AboutValues" xml:space="preserve">
+    <value>AcercadeLosValores</value>
+  </data>
+  <data name="AboutVision" xml:space="preserve">
+    <value>AcercadeVision</value>
+  </data>
+  <data name="ContactIntro" xml:space="preserve">
+    <value>ContactoIntroducción</value>
+  </data>
   <data name="HomeAboutSummary" xml:space="preserve">
-    <value>InicioAcerca deResumen</value>
+    <value>InicioAcercadeResumen</value>
+  </data>
+  <data name="HomeCallToAction" xml:space="preserve">
+    <value>InicioLlamadoAlaAcción</value>
   </data>
   <data name="HomeHero" xml:space="preserve">
     <value>InicioHero</value>
   </data>
   <data name="HomeMainPromo" xml:space="preserve">
-    <value>InicioPromoción Principal</value>
+    <value>InicioPromociónPrincipal</value>
   </data>
   <data name="HomePartnersHeader" xml:space="preserve">
     <value>InicioSociosEncabezado</value>
@@ -137,5 +158,23 @@
   </data>
   <data name="HomeTestimonialsHeader" xml:space="preserve">
     <value>InicioTestimoniosEncabezado</value>
+  </data>
+  <data name="NewsIntro" xml:space="preserve">
+    <value>NoticiasIntroducción</value>
+  </data>
+  <data name="ProductsBestSellersHeader" xml:space="preserve">
+    <value>ProductosLos más vendidosEncabezado</value>
+  </data>
+  <data name="ProductsIntro" xml:space="preserve">
+    <value>ProductosIntroducción</value>
+  </data>
+  <data name="ProductsLastOnesHeader" xml:space="preserve">
+    <value>ProductosÚltimosEncabezado</value>
+  </data>
+  <data name="ServicesIntro" xml:space="preserve">
+    <value>ServiciosIntroducción</value>
+  </data>
+  <data name="SolutionsIntro" xml:space="preserve">
+    <value>SolucionesIntroducción</value>
   </data>
 </root>
