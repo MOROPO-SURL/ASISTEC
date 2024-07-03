@@ -1,7 +1,7 @@
-﻿@{
-    const string TITLE = "Nosotros";
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Frontend.AboutIndexViewModel
 
-    ViewData["Title"] = TITLE;
+@{
+    ViewData["Title"] = Model.IntroTextBlock.Title;
 
     Layout = "_FrontendLayout";
 }
@@ -11,13 +11,17 @@
     <style type="text/css">
         #hero-main {
             min-height: 240px;
-            background-image: url('/media/images/website.s_cover_default_image.jpg');
-            background-position: 50% 0;
+            background-position: center;
+            background-size: cover;
             overflow: hidden;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            @if (Model.HeaderIlustration != null)
+            {
+                @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.HeaderIlustration.Image.Id, Model.HeaderIlustration.Image.Extension))
+            }
         }
 
         #hero-main-vintage {
@@ -39,12 +43,140 @@
     <div id="hero-main-vintage" class="hero-fullsize-child hero-common-vintage"></div>
 </section>
 
-<div class="container">
-    <h1 class="display-4 font-weight-normal">@TITLE</h1>
-</div>
-
 <section>
     <div class="container">
-        <p>Would the change him adversity carnal resolved into to condemned childe he peace feud not ere stalked only suits present and done to oh spent sought or then and to not childe artless adieu mine harolds few this sought in parting of him then in objects bliss flow start of given basked he shamed to nor holy for in almost way of ah can dear his it ee not his the and but nine not beyond moths or his ear crime would heartless thy suits peace which passion crime heartless will him goodly of had flash deem sore bacchanals he satiety her drowsy day counsel by him the a still more was none ne honeyed then the in feeble the</p>
+        <h1 class="display-3 font-weight-normal mb-4">@Model.IntroTextBlock.Title</h1>
+        @if (!string.IsNullOrEmpty(Model.IntroTextBlock.Description))
+        {
+            <div class="mb-5">
+                @Html.Raw(Model.IntroTextBlock.Description)
+            </div>
+        }
+
+        @if (Model.Representatives.Length > 0)
+        {
+            <div class="text-center"><h1 class="mb-5">Representantes</h1></div>
+
+            <div class="row mb-5">
+                @foreach (var item in Model.Representatives)
+                {
+                    <div class="col-md-6 mb-3">
+                        <div class="row">
+                            <div class="col-4 mb-3">
+                                @if (item.Image != null)
+                                {
+                                    <img class="img-thumbnail img-fluid rounded-circle" src="~/media/images/@item.Image.Id.@item.Image.Extension" />
+                                }
+                                else
+                                {
+                                    <img class="img-thumbnail img-fluid rounded-circle" src="~/img/default-person-picture.jpg" />
+                                }
+                            </div>
+                            <div class="col-8">
+                                <h4>@item.Fullname</h4>
+                                <h5 class="text-secondary">@item.Position</h5>
+                                <div>@Html.Raw(item.About)</div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>
+
+<section class="bg-white">
+    <div class="container py-5">        
+        @if (Model.MissionIlustration == null)
+        {
+            <h1 class="mb-4">@Model.MissionTextBlock.Title</h1>
+
+            <div>@Html.Raw(Model.MissionTextBlock.Description)</div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h1 class="mb-4">@Model.MissionTextBlock.Title</h1>
+
+                    <div>@Html.Raw(Model.MissionTextBlock.Description)</div>
+                </div>
+                <div class="col-md-6">
+                    <img class="img-fluid" src="~/media/images/@Model.MissionIlustration.Image.Id.@Model.MissionIlustration.Image.Extension" />
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<section>
+    <div class="container py-5">
+        @if (Model.VisionIlustration == null)
+        {
+            <h1 class="mb-4">@Model.VisionTextBlock.Title</h1>
+
+            <div>@Html.Raw(Model.VisionTextBlock.Description)</div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <img class="img-fluid" src="~/media/images/@Model.VisionIlustration.Image.Id.@Model.VisionIlustration.Image.Extension" />
+                </div>
+                <div class="col-md-6">
+                    <h1 class="mb-4">@Model.VisionTextBlock.Title</h1>
+
+                    <div>@Html.Raw(Model.VisionTextBlock.Description)</div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<section class="bg-white">
+    <div class="container py-5">
+        @if (Model.ValuesIlustration == null)
+        {
+            <h1 class="mb-4">@Model.ValuesTextBlock.Title</h1>
+
+            <div>@Html.Raw(Model.ValuesTextBlock.Description)</div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <h1 class="mb-4">@Model.ValuesTextBlock.Title</h1>
+
+                    <div>@Html.Raw(Model.ValuesTextBlock.Description)</div>
+                </div>
+                <div class="col-md-6">
+                    <img class="img-fluid" src="~/media/images/@Model.ValuesIlustration.Image.Id.@Model.ValuesIlustration.Image.Extension" />
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+<section>
+    <div class="container py-5">
+        @if (Model.HistoryIlustration == null)
+        {
+            <h1 class="mb-4">@Model.HistoryTextBlock.Title</h1>
+
+            <div>@Html.Raw(Model.HistoryTextBlock.Description)</div>
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <img class="img-fluid" src="~/media/images/@Model.HistoryIlustration.Image.Id.@Model.HistoryIlustration.Image.Extension" />
+                </div>
+                <div class="col-md-6">
+                    <h1 class="mb-4">@Model.HistoryTextBlock.Title</h1>
+
+                    <div>@Html.Raw(Model.HistoryTextBlock.Description)</div>
+                </div>
+            </div>
+        }
     </div>
 </section>

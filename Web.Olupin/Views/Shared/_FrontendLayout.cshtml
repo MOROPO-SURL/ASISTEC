@@ -4,11 +4,7 @@
 
 @section styles
 {
-    <style type="text/css">
-        body {
-            background-color: #f9f9f9;
-        }
-    </style>
+    <link href="/css/frontend.css" rel="stylesheet" type="text/css" />
 
     @RenderSection("styles", false)
 }
@@ -19,6 +15,6 @@
 
 @await Component.InvokeAsync("FrontendNavigationBar")
 
-<div class="mb-4" style="margin-top: 152px;">
+<div id="content-section">
     @RenderBody()
 </div>

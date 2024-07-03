@@ -1,7 +1,7 @@
-﻿@{
-    const string TITLE = "Contacto";
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Frontend.ContactIndexViewModel
 
-    ViewData["Title"] = TITLE;
+@{
+    ViewData["Title"] = Model.IntroTextBlock.Title;
 
     Layout = "_FrontendLayout";
 }
@@ -13,13 +13,17 @@
     <style type="text/css">
         #hero-main {
             min-height: 240px;
-            background-image: url('/media/images/website.s_cover_default_image.jpg');
-            background-position: 50% 0;
+            background-position: center;
+            background-size: cover;
             overflow: hidden;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            @if (Model.HeaderIlustration != null)
+            {
+                @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.HeaderIlustration.Image.Id, Model.HeaderIlustration.Image.Extension))
+            }
         }
 
         #hero-main-vintage {
@@ -62,30 +66,52 @@
     <div id="hero-main-vintage" class="hero-fullsize-child hero-common-vintage"></div>
 </section>
 
-<div class="container">
-    <h1 class="display-4 font-weight-normal">@TITLE</h1>
-</div>
+<section class="container pb-5">
+    <h1 class="display-3 font-weight-normal mb-4">@Model.IntroTextBlock.Title</h1>
+    @if (!string.IsNullOrEmpty(Model.IntroTextBlock.Description))
+    {
+        <div class="mb-5">
+            @Html.Raw(Model.IntroTextBlock.Description)
+        </div>
+    }
+    @{
+        var notificationEntries = TempData.Where(x => x.Key.EndsWith("-notification")).ToArray();
 
-<section class="container">
-    <p class="lead mb-5">¿Deseas conocer más sobre nuestros servicios? ¡Contáctanos! Nos encantará conversar contigo.</p>
+        foreach (var extraNotificationEntry in notificationEntries)
+        {
+            var notification = JsonConvert.DeserializeObject<NotificationViewModel>(extraNotificationEntry.Value.ToString());
 
+            <div class="alert alert-dismissible fade show alert-@Html.Raw(notification.Type.ToString().ToLower()) mb-5">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                @if (notification.Title != null)
+                {
+                    <h4>@GlobalViewLocalizationHelper.Localize(notification.Title, ViewLocalizer)</h4>
+                }
+
+                @if (notification.Message != null)
+                {
+                    @Html.Raw(GlobalViewLocalizationHelper.Localize(notification.Message, ViewLocalizer))
+                    ;
+                }
+
+                @if (notification.Messages != null)
+                {
+                    <ul>
+                        @foreach (var item in notification.Messages)
+                        {
+                            <li>@GlobalViewLocalizationHelper.Localize(item, ViewLocalizer)</li>
+                        }
+                    </ul>
+                }
+            </div>
+        }
+    }
     <div class="row">
         <div class="col-sm-6">
             <h2>Envíanos un mensaje</h2>
-            <form>
-                <label>Tu nombre:</label>
-                <input type="text" name="name" class="form-control mb-3" />
-                <label>Tu correo electrónico:</label>
-                <input type="email" name="email" class="form-control mb-3" />
-                <label>Tu número de teléfono (opcional):</label>
-                <input type="tel" name="phone" class="form-control mb-3" />
-                <label>Asunto:</label>
-                <input type="text" name="subject" class="form-control mb-3" />
-                <label>Mensaje:</label>
-                <textarea name="message" rows="8" class="form-control mb-3"></textarea>
-
-                <input type="submit" class="btn btn-primary" value="ENVIAR" />
-            </form>
+            <partial name="_CreateContactRecordPartial" model="new MOROPO.ASISTEC.Web.Olupin.Models.View.ContactRecordInputViewModel()" />
         </div>
         <div class="col-sm-6">
             <h2 class="mb-3">Dónde encontrarnos?</h2>
@@ -117,7 +143,7 @@
                     <div class="row no-gutters">
                         <div class="col-auto">
                             <span class="fas fa-fw fa-envelope"></span>
-                        </div> 
+                        </div>
                         <div class="col ml-1">
                             <a href="mailto:contacto@asistec.cu" class="text-dark">contacto@asistec.cu</a>
                         </div>

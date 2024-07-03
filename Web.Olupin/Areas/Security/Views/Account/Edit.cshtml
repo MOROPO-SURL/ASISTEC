@@ -11,7 +11,7 @@
     {
         new BreadcrumbViewModel
         {
-            Caption = "<span class=\"mdi mdi-desktop-mac-dashboard\" style=\"margin-right: 4px;\"></span>" + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
+            Caption = "<i class=\"fas fa-fw fa-tachometer-alt\"></i> " + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
             Url = Url.Action("Index", "Dashboard", new { Area = "management" })
         },
         new BreadcrumbViewModel
@@ -127,5 +127,5 @@
     </div>
     <hr />
     <button type="submit" class="btn btn-primary">Modificar</button>
-    <a class="btn btn-light" href="@Url.Action("index")">Cancelar</a>
+    <a class="btn btn-secondary" href="@Url.Action("index")">Cancelar</a>
 </form>

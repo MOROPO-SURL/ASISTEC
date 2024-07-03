@@ -10,12 +10,142 @@
 }
 
 @section styles {
+    <link rel="stylesheet" href="~/vendor/apexcharts/apexcharts.css" />
+
     <style type="text/css">
         .card .fas {
             font-size: 32px;
         }
     </style>
 }
+
+
+
+@section scripts {
+    <script type="text/javascript" src="~/vendor/apexcharts/apexcharts.min.js"></script>
+
+    <script type="text/javascript">
+        var userActivityLastDaysOptions = {
+            series: [{
+                name: 'Views',
+                data: @Newtonsoft.Json.JsonConvert.SerializeObject(Model.WeekUserActivity.Select(_item => _item.Value).ToArray())
+            }],
+            chart: {
+                height: 350,
+                type: 'area'
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            xaxis: {
+                type: 'int',
+                categories: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.WeekUserActivity.Select(_item => _item.Key.ToString()).ToArray()))
+            }
+        };
+
+        var userActivityLastDaysChart = new ApexCharts(document.querySelector("#user-activity-last-days-chart"), userActivityLastDaysOptions);
+
+        userActivityLastDaysChart.render();
+
+        var userActivityBySectionOptions = {
+            series: @Newtonsoft.Json.JsonConvert.SerializeObject(Model.VisitsBySection),
+            labels: ['Nosotros', 'Servicios', 'Productos', 'Soluciones', 'Noticias', 'Contacto'],
+            chart: {
+                type: 'polarArea',
+            },
+            stroke: {
+                colors: ['#fff']
+            },
+            fill: {
+                opacity: 0.8
+            },
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var userActivityBySectionChart = new ApexCharts(document.querySelector("#user-activity-by-section-chart"), userActivityBySectionOptions);
+
+        userActivityBySectionChart.render();
+    </script>
+}
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card border-left-info shadow-lg mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-auto">
+                        <i class="fas fa-envelope text-info fa-10x"></i>
+                    </div>
+                    <div class="col">
+                        <h3 class="card-title text-info">Registros de Contacto</h3>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h5 class="float-md-left mb-md-0 font-weight-bold" style="color: black;">No leídos:</h5>
+                                <h2 class="display-2 mb-0 float-md-right">@Model.UnreadContactRecordCount</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-sm-6">
+                                <h5 class="float-md-left mb-md-0 font-weight-bold" style="color: black;">Semana:</h5>
+                                <h2 class="display-2 mb-0 float-md-right">@Model.WeekContactRecordCount</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow-lg mb-4">
+            <div class="card-header">
+                <h5 class="font-weight-bold text-primary">Tendencia de visualizaciones</h5>
+                <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Semanda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Mes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Semestre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Año</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div id="user-activity-last-days-chart" style="min-height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-lg mb-4">
+            <div class="card-header"><h5 class="font-weight-bold text-primary mb-0">Visualización por secciones</h5></div>
+            <div class="card-body">
+                <div id="user-activity-by-section-chart" style="min-height: 400px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="management-sections" class="row">
     <div class="col-sm-6">
@@ -38,7 +168,7 @@
                             @foreach (var item in subList)
                             {
                                 <div class="col-sm-4" style="text-align: center; padding-bottom: 15px; padding-top: 15px;">
-                                    @if (User.IsAuthorized(item.Role))
+                                    @if (User.IsAuthorized(item.Role, Context))
                                     {
                                         <a href="@Url.Action(item.Action, item.Controller, new { item.Area })">
                                             <i class="@item.ToIconographyHtmlString()"></i>
@@ -85,7 +215,7 @@
                                 @foreach (var item in subList)
                                 {
                                     <div class="col-sm-4" style="text-align: center; padding-bottom: 15px; padding-top: 15px;">
-                                        @if (User.IsAuthorized(item.Role))
+                                        @if (User.IsAuthorized(item.Role, Context))
                                         {
                                             <a href="@Url.Action(item.Action, item.Controller, new { item.Area })">
                                                 <i class="@item.ToIconographyHtmlString()"></i>

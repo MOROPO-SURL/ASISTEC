@@ -1,9 +1,11 @@
-﻿@{
-    const string TITLE = "Servicios";
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Frontend.ServicesIndexViewModel
 
-    ViewData["Title"] = TITLE;
+@{
+    ViewData["Title"] = Model.IntroTextBlock.Title;
 
     Layout = "_FrontendLayout";
+
+    var isWhiteSectionTurn = false;
 }
 
 @section styles
@@ -11,13 +13,17 @@
     <style type="text/css">
         #hero-main {
             min-height: 240px;
-            background-image: url('/media/images/website.s_cover_default_image.jpg');
-            background-position: 50% 0;
+            background-position: center;
+            background-size: cover;
             overflow: hidden;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
+            @if (Model.HeaderIlustration != null)
+            {
+                @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.HeaderIlustration.Image.Id, Model.HeaderIlustration.Image.Extension))
+            }
         }
 
         #hero-main-vintage {
@@ -31,6 +37,16 @@
             left: 0;
             right: 0;
         }
+
+        #services-sections a {
+            color: #FF6702;
+        }
+
+        #services-sections a.btn-primary {
+            background-color: #FF6702;
+            border-color: #FF6702;
+            color: white;
+        }
     </style>
 }
 
@@ -39,12 +55,64 @@
     <div id="hero-main-vintage" class="hero-fullsize-child hero-common-vintage"></div>
 </section>
 
-<div class="container">
-    <h1 class="display-4 font-weight-normal">@TITLE</h1>
-</div>
-
 <section>
     <div class="container">
-        <p>Would the change him adversity carnal resolved into to condemned childe he peace feud not ere stalked only suits present and done to oh spent sought or then and to not childe artless adieu mine harolds few this sought in parting of him then in objects bliss flow start of given basked he shamed to nor holy for in almost way of ah can dear his it ee not his the and but nine not beyond moths or his ear crime would heartless thy suits peace which passion crime heartless will him goodly of had flash deem sore bacchanals he satiety her drowsy day counsel by him the a still more was none ne honeyed then the in feeble the</p>
+        <h1 class="display-3 font-weight-normal mb-4">@Model.IntroTextBlock.Title</h1>
+        @if (!string.IsNullOrEmpty(Model.IntroTextBlock.Description))
+        {
+            <div class="mb-5">
+                @Html.Raw(Model.IntroTextBlock.Description)
+            </div>
+        }
     </div>
 </section>
+
+<div id="services-sections">
+    @foreach (var item in Model.Sections)
+    {
+        var sectionCssClass = isWhiteSectionTurn ? "py-5 bg-white" : "py-5";
+
+        isWhiteSectionTurn = !isWhiteSectionTurn;
+
+        <section class="@sectionCssClass">
+            <div class="container">
+                <h1>@item.Key.Name</h1>
+                <hr />
+                <img class="w-50 float-right img-thumbnail ml-md-3 mb-3" src="~/media/images/@item.Key.FeatureImage.Id.@item.Key.FeatureImage.Extension" />
+                @Html.Raw(item.Key.Description)
+
+                <div class="clearfix"></div>
+
+                @if (item.Value.Length > 0)
+                {
+                    <h4 class="mb-3">Casos de éxito</h4>
+                    <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2">
+                        @foreach (var _item in item.Value)
+                        {
+                            <div class="col mb-4">
+                                <div class="card h-100">
+                                    @if (_item.FeatureImage != null)
+                                    {
+                                        <img src="~/media/images/@_item.FeatureImage.Id.@_item.FeatureImage.Extension" class="card-img-top" alt="@_item.Title">
+                                    }
+                                    <div class="card-body">
+                                        <h5 class="card-title">@_item.Title</h5>
+                                        <dl>
+                                            <dt>Cliente</dt>
+                                            <dd>@_item.Partner.Name</dd>
+                                        </dl>
+                                        <p class="card-text">@_item.Summary</p>
+                                        <a class="btn btn-primary" asp-action="index" asp-route-key="@_item.Id">Conocer más</a>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">@_item.At.ToLongDateString()</small>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+        </section>
+    }
+</div>
