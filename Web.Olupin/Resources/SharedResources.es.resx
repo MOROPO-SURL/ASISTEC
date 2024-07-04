@@ -138,6 +138,9 @@
   <data name="At" xml:space="preserve">
     <value>En</value>
   </data>
+  <data name="ChangePasswordSuccessMessage" xml:space="preserve">
+    <value>Cambio de contraseña realizado con éxito. Inicie sesión nuevamente.</value>
+  </data>
   <data name="ConfirmPassword" xml:space="preserve">
     <value>Confirmar Contraseña</value>
   </data>
@@ -150,8 +153,14 @@
   <data name="Context" xml:space="preserve">
     <value>Contexto</value>
   </data>
+  <data name="CreationSuccessMessage" xml:space="preserve">
+    <value>Cambios aplicados con éxito.</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Fecha</value>
+  </data>
+  <data name="DeletionSuccessMessage" xml:space="preserve">
+    <value>Cambios aplicados con éxito.</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Descripción</value>
@@ -185,6 +194,9 @@
   </data>
   <data name="InstitutionName" xml:space="preserve">
     <value>Nombre de la Institución</value>
+  </data>
+  <data name="InvalidMessage" xml:space="preserve">
+    <value>Los datos introducidos no son válidos.</value>
   </data>
   <data name="Label" xml:space="preserve">
     <value>Etiqueta</value>
@@ -227,6 +239,9 @@
   </data>
   <data name="RepresentativePosition" xml:space="preserve">
     <value>Cargo</value>
+  </data>
+  <data name="RequiredValidationErrorMessage" xml:space="preserve">
+    <value>El campo {0} es obligatorio.</value>
   </data>
   <data name="Review" xml:space="preserve">
     <value>Opinión</value>
