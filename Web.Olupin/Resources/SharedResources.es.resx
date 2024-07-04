@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Acerca de</value>
+  </data>
   <data name="AboutHistory" xml:space="preserve">
     <value>AcercadeHistoria</value>
   </data>
@@ -132,8 +135,26 @@
   <data name="AboutVision" xml:space="preserve">
     <value>AcercadeVision</value>
   </data>
+  <data name="At" xml:space="preserve">
+    <value>En</value>
+  </data>
+  <data name="ConfirmPassword" xml:space="preserve">
+    <value>Confirmar Contraseña</value>
+  </data>
   <data name="ContactIntro" xml:space="preserve">
     <value>ContactoIntroducción</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>Contenido</value>
+  </data>
+  <data name="Context" xml:space="preserve">
+    <value>Contexto</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descripción</value>
   </data>
   <data name="HomeAboutSummary" xml:space="preserve">
     <value>InicioAcercadeResumen</value>
@@ -159,8 +180,38 @@
   <data name="HomeTestimonialsHeader" xml:space="preserve">
     <value>InicioTestimoniosEncabezado</value>
   </data>
+  <data name="Id" xml:space="preserve">
+    <value>Identificación</value>
+  </data>
+  <data name="InstitutionName" xml:space="preserve">
+    <value>Nombre de la Institución</value>
+  </data>
+  <data name="Label" xml:space="preserve">
+    <value>Etiqueta</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
   <data name="NewsIntro" xml:space="preserve">
     <value>NoticiasIntroducción</value>
+  </data>
+  <data name="Partner" xml:space="preserve">
+    <value>Socio</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="Position" xml:space="preserve">
+    <value>Posición</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Prioridad</value>
   </data>
   <data name="ProductsBestSellersHeader" xml:space="preserve">
     <value>ProductosLos más vendidosEncabezado</value>
@@ -171,10 +222,37 @@
   <data name="ProductsLastOnesHeader" xml:space="preserve">
     <value>ProductosÚltimosEncabezado</value>
   </data>
+  <data name="RepresentativeName" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="RepresentativePosition" xml:space="preserve">
+    <value>Cargo</value>
+  </data>
+  <data name="Review" xml:space="preserve">
+    <value>Opinión</value>
+  </data>
+  <data name="Service" xml:space="preserve">
+    <value>Servicio</value>
+  </data>
   <data name="ServicesIntro" xml:space="preserve">
     <value>ServiciosIntroducción</value>
   </data>
   <data name="SolutionsIntro" xml:space="preserve">
     <value>SolucionesIntroducción</value>
+  </data>
+  <data name="Summary" xml:space="preserve">
+    <value>Resumen</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Subir</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Usuarios</value>
+  </data>
+  <data name="Web Site" xml:space="preserve">
+    <value>Sitio Web</value>
   </data>
 </root>
