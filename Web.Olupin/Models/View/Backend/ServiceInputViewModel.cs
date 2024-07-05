@@ -23,6 +23,7 @@ namespace MOROPO.ASISTEC.Web.Olupin.Models.View.Backend
         [Display(Name = "Description")]
         public string Description { get; set; }
 
+        [Display(Name = "Priority")]
         public int Priority { get; set; }
 
         [Required(ErrorMessage = "RequiredValidationErrorMessage")]

@@ -17,11 +17,17 @@
             justify-content: space-around;
         }
 
+        .img-service-card {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
         #hero-main {
             min-height: 720px;
             @if (Model.HeroIlustration != null)
             {
-                @Html.Raw(string.Format("background-blend-mode: overlay; background-color: rgba(0,0,0,0.5); background-image: url('/media/images/{0}.{1}');", Model.HeroIlustration.Image.Id, Model.HeroIlustration.Image.Extension))
+                @Html.Raw(string.Format("background-blend-mode: overlay; background-color: rgba(0,0,0,0.15); background-image: url('/media/images/{0}.{1}');", Model.HeroIlustration.Image.Id, Model.HeroIlustration.Image.Extension))
             }
         }
 
@@ -29,7 +35,7 @@
             min-height: 720px;
             @if (Model.MainPromoIlustration != null)
             {
-                @Html.Raw(string.Format("background-blend-mode: overlay; background-color: rgba(0,0,0,0.5); background-image: url('/media/images/{0}.{1}');", Model.MainPromoIlustration.Image.Id, Model.MainPromoIlustration.Image.Extension))
+                @Html.Raw(string.Format("background-blend-mode: overlay; background-color: rgba(0,0,0,0.15); background-image: url('/media/images/{0}.{1}');", Model.MainPromoIlustration.Image.Id, Model.MainPromoIlustration.Image.Extension))
             }
         }
 
@@ -160,7 +166,7 @@
             @foreach (var item in Model.Services)
             {
                 <div class="card">
-                    <img src="~/media/images/@item.FeatureImage.Id.@item.FeatureImage.Extension" class="card-img-top" alt="@item.Name" />
+                    <div class="card-img-top embed-responsive embed-responsive-4by3 img-service-card" style="background-image: url('/media/images/@item.FeatureImage.Id.@item.FeatureImage.Extension');"></div>
                     <div class="card-body">
                         <h5 class="card-title">@item.Name</h5>
                         <p class="card-text">@item.Summary</p>
@@ -232,9 +238,22 @@
                 if (isFirstRendered)
                 {
                     <div id="testimonial-item-@item.Id" class="carousel-item testimonial-carousel-item" style="background-image: url('/media/images/@item.ContextImage.Id.@item.ContextImage.Extension');">
-                        <div class="carousel-caption bg-white p-3">
-                            <h5>@item.RepresentativeName</h5>
-                            <p>@item.Review</p>
+                        <div class="carousel-caption bg-white p-3" style="max-width: 540px;">
+                            <div class="row no-gutters">
+                                <div class="col-auto mr-2">
+                                    <img class="img-fluid img-thumbnail rounded-circle" style="width: 96px;" src="~/media/images/@item.RepresentativeImage.Id.@item.RepresentativeImage.Extension" />
+                                </div>
+                                <div class="col">
+                                    <h4>@item.RepresentativeName</h4>
+                                    <h5>@item.InstitutionName</h5>
+                                    <p class="text-muted">@item.RepresentativePosition</p>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="fas fa-fw fa-2x fa-quote-left float-left mr-4"></span>
+                                <p class="mb-0">@item.Review</p>
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
                     </div>
                 }
@@ -243,20 +262,22 @@
                     isFirstRendered = true;
 
                     <div id="testimonial-item-@item.Id" class="carousel-item active testimonial-carousel-item" style="background-image: url('/media/images/@item.ContextImage.Id.@item.ContextImage.Extension');">
-                        <div class="testimonial-carousel-caption m-4 p-3">
-                            <div class="row">
-                                <div class="col-auto">
-                                    <img class="img-fluid img-thumbnail rounded-circle" style="width: 160px;" src="~/media/images/@item.RepresentativeImage.Id.@item.RepresentativeImage.Extension" />
+                        <div class="testimonial-carousel-caption m-4 p-3" style="max-width: 540px;">
+                            <div class="row no-gutters">
+                                <div class="col-auto mr-2">
+                                    <img class="img-fluid img-thumbnail rounded-circle" style="width: 96px;" src="~/media/images/@item.RepresentativeImage.Id.@item.RepresentativeImage.Extension" />
                                 </div>
-                                <div class="col" style="max-width: 540px;">
+                                <div class="col">
                                     <h4>@item.RepresentativeName</h4>
                                     <h5>@item.InstitutionName</h5>
                                     <p class="text-muted">@item.RepresentativePosition</p>
-                                    <p>@item.Review</p>
                                 </div>
                             </div>
-
-                            
+                            <div>
+                                <span class="fas fa-fw fa-2x fa-quote-left float-left mr-4"></span>
+                                <p class="mb-0">@item.Review</p>
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
                     </div>
                 }
@@ -285,7 +306,23 @@
     </div>
 
     <div id="partners-vintage" class="text-center">
-        <p class="lead text-muted mb-0 py-3">Sin elementos que mostrar por el momento.</p>
+        <div class="container">
+            @if (Model.Partners.Length <= 0)
+            {
+                <p class="lead text-muted mb-0 py-3">Sin elementos que mostrar por el momento.</p>
+            }
+            else
+            {
+                <div class="row">
+                    @foreach (var item in Model.Partners)
+                    {
+                        <div class="col-3 col-lg-2 d-table">
+                            <img class="img-fluid" src="/media/images/@item.Image.Id.@item.Image.Extension" title="@item.Name" />
+                        </div>
+                    }
+                </div>
+            }
+        </div>
     </div>
 </section>
 

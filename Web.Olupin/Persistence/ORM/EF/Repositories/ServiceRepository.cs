@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using MOROPO.ASISTEC.Web.Persistence.Entities;
 
 namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Repositories
 {
@@ -11,6 +13,11 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Repositories
         protected override System.Linq.IQueryable<Web.Persistence.Entities.Service> GetQueryableDbSet()
         {
             return base.GetQueryableDbSet().Include(_entity => _entity.FeatureImage);
+        }
+
+        public override Func<Service, object> GetPagingOrderSelector()
+        {
+            return entity => entity.Priority;
         }
     }
 }
