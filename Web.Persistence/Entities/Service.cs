@@ -13,7 +13,6 @@ namespace MOROPO.ASISTEC.Web.Persistence.Entities
         public bool Enabled { get; set; }
 
         [Required]
-        [MaxLength(255)]
         public string Summary { get; set; }
 
         [Required]

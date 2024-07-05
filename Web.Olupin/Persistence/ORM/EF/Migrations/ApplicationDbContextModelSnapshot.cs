@@ -58,8 +58,7 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
 
                     b.Property<string>("Summary")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("summary");
 
                     b.Property<string>("Title")
@@ -261,8 +260,7 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
 
                     b.Property<string>("Summary")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("summary");
 
                     b.HasKey("Id")
@@ -306,8 +304,7 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
 
                     b.Property<string>("Summary")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("summary");
 
                     b.Property<string>("Title")
@@ -360,8 +357,7 @@ namespace MOROPO.ASISTEC.Web.Olupin.Persistence.ORM.EF.Migrations
 
                     b.Property<string>("Review")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("character varying(255)")
+                        .HasColumnType("text")
                         .HasColumnName("review");
 
                     b.HasKey("Id")

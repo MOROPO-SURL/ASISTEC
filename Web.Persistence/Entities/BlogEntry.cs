@@ -17,7 +17,6 @@
         public string Context { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]
-        [System.ComponentModel.DataAnnotations.MaxLength(255)]
         public string Summary { get; set; }
 
         [System.ComponentModel.DataAnnotations.Required]

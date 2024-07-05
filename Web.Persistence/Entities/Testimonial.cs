@@ -25,7 +25,6 @@ namespace MOROPO.ASISTEC.Web.Persistence.Entities
         public System.Guid RepresentativeImageId { get; set; }
 
         [Required]
-        [MaxLength(255)]
         public string Review {  get; set; }
     }
 }

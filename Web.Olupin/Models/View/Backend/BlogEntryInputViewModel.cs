@@ -26,7 +26,6 @@ namespace MOROPO.ASISTEC.Web.Olupin.Models.View.Backend
         public string Context { get; set; }
 
         [Required(ErrorMessage = "RequiredValidationErrorMessage")]
-        [MaxLength(255)]
         [Display(Name = "Summary")]
         public string Summary { get; set; }
 
