@@ -36,7 +36,7 @@ namespace MOROPO.ASISTEC.Web.Olupin.Controllers.Frontend
 
             var headerIlustration = ilustrationRepository.FindOneBy(_entity => _entity.Id == IlustrationId.ServicesHeader);
 
-            var services = serviceRepository.FindBy(_entity => _entity.Enabled).ToArray();
+            var services = serviceRepository.FindBy(_entity => _entity.Enabled).OrderBy(_entity => _entity.Priority).ToArray();
 
             var solutions = solutionRepository.FindBy(_entity => _entity.Service.Enabled).ToArray();
 

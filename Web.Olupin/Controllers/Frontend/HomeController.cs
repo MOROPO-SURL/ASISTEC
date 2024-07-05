@@ -73,7 +73,7 @@ namespace MOROPO.ASISTEC.Web.Olupin.Controllers.Frontend
                 TestimonialsHeaderTextBlock = new TextBlockDisplayViewModel(),
                 PartnersHeaderTextBlock = new TextBlockDisplayViewModel(),
                 CallToActionTextBlock = new TextBlockDisplayViewModel(),
-                Services = serviceRepository.FindBy(_entity => _entity.Enabled).ToArray().Select(_entity =>
+                Services = serviceRepository.FindBy(_entity => _entity.Enabled).OrderBy(_entity => _entity.Priority).ToArray().Select(_entity =>
                 {
                     var _model = new ServiceDisplayViewModel();
 
