@@ -112,21 +112,21 @@
             {
                 <p class="lead">@Html.Raw(Model.HeroTextBlock.Description)</p>
             }
-            <a class="btn btn-primary" href="/contact">Contactar</a>
+            <a class="btn btn-primary" asp-action="index" asp-controller="contact">Contactar</a>
         </div>
     </div>
 </section>
 
 <section class="container">
     <div class="row pt-5">
-        <div class="col-md-6"">
+        <div class="col-md-6">
             <div class="jumbotron mb-0" style="background: none;">
                 <h1 class="display-4 font-weight-bold">@Model.AboutSummaryTextBlock.Title</h1>
                 @if (!string.IsNullOrEmpty(Model.AboutSummaryTextBlock.Description))
                 {
                     <p class="lead">@Html.Raw(Model.AboutSummaryTextBlock.Description)</p>
                 }
-                <a class="btn btn-primary mt-4" asp-action="index" asp-controller="contact">Conocer más</a>
+                <a class="btn btn-primary mt-4" asp-action="index" asp-controller="about">Conocer más</a>
             </div>
         </div>
         <div class="col-md-6">
@@ -148,7 +148,7 @@
             {
                 <p class="lead">@Html.Raw(Model.MainPromoTextBlock.Description)</p>
             }
-            <a class="btn btn-primary" href="/contact">Contactar</a>
+            <a class="btn btn-primary" asp-action="index" asp-controller="contact">Contactar</a>
         </div>
     </div>
 </section>
@@ -337,7 +337,7 @@
                 }
             </div>
             <div class="col-md-6 col-sm-3 text-right">
-                <a class="btn btn-primary text-uppercase" href="/contact">Contáctanos</a>
+                <a class="btn btn-primary text-uppercase" asp-action="index" asp-controller="contact">Contáctanos</a>
             </div>
         </div>
     </div>
