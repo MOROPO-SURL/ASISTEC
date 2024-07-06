@@ -10,6 +10,10 @@ namespace MOROPO.ASISTEC.Web.Olupin.Models.View.Backend
 
         public KeyValuePair<System.DayOfWeek, long>[] WeekUserActivity { get; set; }
 
+        public KeyValuePair<int, long>[] MonthUserActivity { get; set; }
+
+        public KeyValuePair<int, long>[] SemesterUserActivity { get; set; }
+
         public int UnreadContactRecordCount { get; set; }
         public int WeekContactRecordCount { get; set; }
     }    
