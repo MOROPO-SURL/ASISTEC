@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>MOROPO.ASISTEC.Web.Persistence</AssemblyName>
+    <RootNamespace>MOROPO.ASISTEC.Web.Persistence</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GuamaFramework.Identity.Persistence" Version="6.0.0.22" />
+  </ItemGroup>
+
+</Project>

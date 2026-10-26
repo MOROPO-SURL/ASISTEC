@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    @if (!ViewData.ContainsKey("Title"))
+    {
+        <title>ASISTEC S.R.L.</title>
+    }
+    else
+    {
+        <title>ASISTEC S.R.L. - @ViewData["Title"]</title>
+    }
+
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css" />
+
+    <style type="text/css">
+        footer {
+            background-color: #201c20;
+            color: white;
+        }
+
+        footer .nav .nav-link:hover {
+            text-decoration: underline;
+            color: lightgray;
+        }
+    </style>
+
+    @RenderSection("styles", false)
+
+</head>
+
+<body id="page-top">
+
+    @RenderBody()
+
+    <footer>
+        <section class="container text-center p-5">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-action="index" asp-controller="home">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-action="index" asp-controller="about">Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-action="index" asp-controller="services">Servicios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-action="index" asp-controller="products">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-action="index" asp-controller="solutions">Soluciones</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-action="index" asp-controller="news">Noticias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-action="index" asp-controller="contact">Contacto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="https://tienda.asistec.moropo.cu" target="_blank">Tienda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-action="index" asp-controller="dashboard" asp-area="management">Contenidos</a>
+                </li>
+            </ul>
+            <hr class="bg-light" />
+            <div>
+                <a class="btn btn-light mx-1" href="https://www.facebook.com/profile.php?id=100089960974878" target="_blank"><i class="fab fa-fw fa-facebook"></i></a>
+                <a class="btn btn-light mx-1" href="https://www.instagram.com/asistec.srl?igsh=MXFuODI4aHc0Yzdjag==" target="_blank"><i class="fab fa-fw fa-instagram"></i></a>
+                <a class="btn btn-light mx-1" href="https://linkedin.com/asistec" target="_blank"><i class="fab fa-fw fa-linkedin"></i></a>
+            </div>
+            <p class="mt-4">Calle Cristo número 70 entre San Antonio y Hospital, ciudad de Camagüey, República de Cuba</p>
+            <div><a class="mx-2" href="tel:+5350963827"><i class="fas fa-fw fa-phone"></i> (+53) 5 0963827</a> <a class="mx-2" href="mailto:contacto@asistec.cu"><span class="fas fa-fw fa-envelope"></span> contacto@asistec.cu</a></div>
+            <img class="mt-5" style="height: 120px;" title="ASISTEC S.R.L." src="/img/logo-200x200-high-contrast-light.png" />
+        </section>
+        <section class="text-center p-3" style="background-color: #FF6702; color: #201c20;">
+            <p class="mb-1">Copyright © @DateTime.Now.Year ASISTEC S.R.L., todos los derechos reservados.</p>
+            <p class="mb-0" style="font-size: 0.65rem;">Una producción de <a style="color: #201c20;" href="https://www.moropo.cu" target="_blank">MOROPO S.U.R.L.</a></p>
+        </section>
+    </footer>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).on("click", "button.filter-form-reseter", function (e) {
+                $(e.target.form).find("select option").prop("selected", false);
+
+                $(e.target.form).find("input[type=text]").prop("value", '');
+
+                e.target.form.submit();
+            });
+
+            $(document).on("click", "input[type='submit']", function (e) {
+                if (!e.target.form) return;
+
+                e.preventDefault();
+
+                $(e.target.form).find("input").addClass('readonly', 'readonly');
+                $(e.target.form).find("select").attr('readonly', 'readonly');
+                $(e.target.form).find("button").attr('disabled', 'disabled');
+                $(e.target.form).find("a.btn").attr('disabled', 'disabled');
+
+                e.target.form.submit();
+            });
+
+            $(document).on("click", "button[type='submit']", function (e) {
+                if (!e.target.form) return;
+
+                e.preventDefault();
+
+                $(e.target.form).find("input").addClass('readonly', 'readonly');
+                $(e.target.form).find("select").attr('readonly', 'readonly');
+                $(e.target.form).find("button").attr('disabled', 'disabled');
+                $(e.target.form).find("a.btn").attr('disabled', 'disabled');
+
+                e.target.form.submit();
+            });
+        });
+    </script>
+
+    @RenderSection("scripts", false)
+
+</body>
+
+</html>

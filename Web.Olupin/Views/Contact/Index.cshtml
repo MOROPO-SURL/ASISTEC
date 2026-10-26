@@ -1,0 +1,154 @@
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Frontend.ContactIndexViewModel
+
+@{
+    ViewData["Title"] = Model.IntroTextBlock.Title;
+
+    Layout = "_FrontendLayout";
+}
+
+@section styles
+{
+    <link rel="stylesheet" href="~/vendor/leaflet/leaflet.css" />
+
+    <style type="text/css">
+        #hero-main {
+            min-height: 240px;
+            background-position: center;
+            background-size: cover;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            @if (Model.HeaderIlustration != null)
+            {
+                @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.HeaderIlustration.Image.Id, Model.HeaderIlustration.Image.Extension))
+            }
+        }
+
+        #hero-main-vintage {
+            background-image: url('/img/01_001.svg');
+            background-position: bottom;
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        #map {
+            height: 240px;
+        }
+    </style>
+}
+
+@section scripts
+{
+    <script type="text/javascript" src="~/vendor/leaflet/leaflet.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var map = L.map('map', {
+                scrollWheelZoom: false
+            }).setView([21.3792, -77.9184], 16);
+
+            var baseLayer = new L.tileLayer('http://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+        });
+    </script>
+}
+
+<section id="hero-main">
+    <div class="hero-fullsize-child hero-common-overlay"></div>
+    <div id="hero-main-vintage" class="hero-fullsize-child hero-common-vintage"></div>
+</section>
+
+<section class="container pb-5">
+    <h1 class="display-3 font-weight-normal mb-4">@Model.IntroTextBlock.Title</h1>
+    @if (!string.IsNullOrEmpty(Model.IntroTextBlock.Description))
+    {
+        <div class="mb-5">
+            @Html.Raw(Model.IntroTextBlock.Description)
+        </div>
+    }
+    @{
+        var notificationEntries = TempData.Where(x => x.Key.EndsWith("-notification")).ToArray();
+
+        foreach (var extraNotificationEntry in notificationEntries)
+        {
+            var notification = JsonConvert.DeserializeObject<NotificationViewModel>(extraNotificationEntry.Value.ToString());
+
+            <div class="alert alert-dismissible fade show alert-@Html.Raw(notification.Type.ToString().ToLower()) mb-5">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                @if (notification.Title != null)
+                {
+                    <h4>@GlobalViewLocalizationHelper.Localize(notification.Title, ViewLocalizer)</h4>
+                }
+
+                @if (notification.Message != null)
+                {
+                    @Html.Raw(GlobalViewLocalizationHelper.Localize(notification.Message, ViewLocalizer))
+                    ;
+                }
+
+                @if (notification.Messages != null)
+                {
+                    <ul>
+                        @foreach (var item in notification.Messages)
+                        {
+                            <li>@GlobalViewLocalizationHelper.Localize(item, ViewLocalizer)</li>
+                        }
+                    </ul>
+                }
+            </div>
+        }
+    }
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Envíanos un mensaje</h2>
+            <partial name="_CreateContactRecordPartial" model="new MOROPO.ASISTEC.Web.Olupin.Models.View.ContactRecordInputViewModel()" />
+        </div>
+        <div class="col-sm-6">
+            <h2 class="mb-3">Dónde encontrarnos?</h2>
+            <div class="card">
+                <div id="map" class="card-img-top"></div>
+                <div class="card-body">
+                    <h4 class="card-title">Domicilio Social</h4>
+                    <div class="row no-gutters">
+                        <div class="col-auto"><i class="fas fa-fw fa-map-marked"></i></div>
+                        <div class="col ml-1">
+                            <p>Calle Cristo número 70 entre San Antonio y Hospital, ciudad de Camagüey, República de Cuba</p>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-auto"><i class="fas fa-fw fa-clock"></i></div>
+                        <div class="col ml-1">
+                            <p>De luines a viernes, de 8:00 AM a 4:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-auto">
+                            <i class="fas fa-fw fa-phone"></i>
+                        </div>
+                        <div class="col ml-1">
+                            <p><a href="tel:+5353201929" class="ml-1 text-dark">(+53) 5 320 1929</a></p>
+                        </div>
+                    </div>
+                    <div class="row no-gutters">
+                        <div class="col-auto">
+                            <span class="fas fa-fw fa-envelope"></span>
+                        </div>
+                        <div class="col ml-1">
+                            <a href="mailto:contacto@asistec.cu" class="text-dark">contacto@asistec.cu</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

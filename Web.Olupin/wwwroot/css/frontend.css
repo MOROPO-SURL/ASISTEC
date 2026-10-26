@@ -1,0 +1,13 @@
+﻿#content-section {
+    margin-top: 62px;
+}
+
+@media (min-width: 768px) {
+    #content-section {
+        margin-top: 144px;
+    }
+}
+
+body {
+    background-color: #f9f9f9;
+}

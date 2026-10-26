@@ -1,0 +1,73 @@
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Backend.ContactRecordDisplayViewModel
+
+@{
+    const string TITLE = "Detalles de Registro de Contacto";
+    const string HEADER = "Administración de Registros de Contacto";
+
+    ViewData["TITLE"] = TITLE;
+    ViewData["HEADER"] = HEADER;
+
+    ViewData[BreadcrumbViewModel.BREADCRUMBS_MAP_KEY] = new List<BreadcrumbViewModel>
+    {
+        new BreadcrumbViewModel
+        {
+            Caption = "<i class=\"fas fa-fw fa-tachometer-alt\"></i> " + GlobalViewLocalizationHelper.Localize("Dashboard", ViewLocalizer),
+            Url = Url.Action("Index", "Dashboard", new { Area = "management" })
+        },
+        new BreadcrumbViewModel
+        {
+            Caption = HEADER,
+            Url = Url.Action("index")
+        },
+        new BreadcrumbViewModel
+        {
+            Caption = TITLE
+        }
+    };
+
+    Layout = "_BackendLayout";
+}
+
+<hr class="mt-0 mb-4" />
+
+<div class="card mb-4">
+    <div class="card-header"><h5 class="mb-0 font-weight-bold text-primary">@TITLE</h5></div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                @Html.Label("Recibido")
+                @Html.TextBoxFor(model => model.CreatedAt, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-6 mb-3">
+                @Html.Label("Recibido")
+                @Html.TextBoxFor(model => model.ReadAt, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="mb-3">
+            @Html.Label("Nombre")
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @readonly="readonly" })
+        </div>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                @Html.Label("Correo Electrónico")
+                @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="col-md-6 mb-3">
+                @Html.Label("Número de Teléfono")
+                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="mb-3">
+            @Html.Label("Asunto")
+            @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="mb-3">
+            @Html.Label("Mensaje")
+            @Html.TextAreaFor(model => model.Message, 6, 1, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-secondary" href="@Url.Action("index")">Regresar al listado</a>
+    </div>
+</div>

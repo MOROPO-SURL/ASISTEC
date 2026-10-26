@@ -1,0 +1,123 @@
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Frontend.NewsIndexViewModel
+
+@{
+    ViewData["Title"] = Model.IntroTextBlock.Title;
+
+    Layout = "_FrontendLayout";
+}
+
+@section styles
+{
+    <style type="text/css">
+        #hero-main {
+            min-height: 240px;
+            background-position: center;
+            background-size: cover;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            @if (Model.HeaderIlustration != null)
+            {
+                @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.HeaderIlustration.Image.Id, Model.HeaderIlustration.Image.Extension))
+            }
+        }
+
+        #hero-main-vintage {
+            background-image: url('/img/01_001.svg');
+            background-position: bottom;
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        #blog-entries-section a {
+            color: #FF6702;
+        }
+
+        #blog-entries-section a.btn-primary {
+            background-color: #FF6702;
+            border-color: #FF6702;
+            color: white;
+        }
+    </style>
+}
+
+<section id="hero-main">
+    <div class="hero-fullsize-child hero-common-overlay"></div>
+    <div id="hero-main-vintage" class="hero-fullsize-child hero-common-vintage"></div>
+</section>
+
+<section>
+    <div class="container">
+        <h1 class="display-3 font-weight-normal mb-4">@Model.IntroTextBlock.Title</h1>
+        @if (!string.IsNullOrEmpty(Model.IntroTextBlock.Description))
+        {
+            <div class="mb-5">
+                @Html.Raw(Model.IntroTextBlock.Description)
+            </div>
+        }
+    </div>
+</section>
+
+<section id="blog-entries-section" class="container pb-5">
+    @if (Model.BlogEntries.Length <= 0)
+    {
+        <p>Sin entradas que mostrar por el momento.</p>
+    }
+    else
+    {
+        foreach (var item in Model.BlogEntries)
+        {
+
+            @if (item.FeatureImage != null)
+            {
+                <hr />
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-flui img-thumbnail" src="~/media/images/@item.FeatureImage.Id.@item.FeatureImage.Extension" />
+                    </div>
+                    <div class="col-md-8 mb-3 mb-md-0">
+                        <a asp-action="index" asp-route-key="@item.Id"><h2>@item.Title</h2></a>
+                        <p class="text-muted">
+                            @if (!string.IsNullOrEmpty(item.Label))
+                            {
+                                <span>@item.Label | @item.CreatedAt.Date.ToLongDateString()</span>
+                            }
+                            else
+                            {
+                                <span>@item.CreatedAt.Date.ToLongDateString()</span>
+                            }
+                        </p>
+                        <p class="lead mb-3">@item.Summary</p>
+                        <a class="btn btn-primary" asp-action="index" asp-route-key="@item.Id">Leer más</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <hr />
+                <div class="mt-4">
+                    <a asp-action="index" asp-route-key="@item.Id"><h2>@item.Title</h2></a>
+                    <p class="text-muted">
+                        @if (!string.IsNullOrEmpty(item.Label))
+                        {
+                            <span>@item.Label | @item.CreatedAt.Date.ToLongDateString()</span>
+                        }
+                        else
+                        {
+                            <span>@item.CreatedAt.Date.ToLongDateString()</span>
+                        }
+                    </p>
+                    <p class="lead mb-3">@item.Summary</p>
+                    <a class="btn btn-primary" asp-action="index" asp-route-key="@item.Id">Leer más</a>
+                </div>
+            }
+        }
+    }
+</section>

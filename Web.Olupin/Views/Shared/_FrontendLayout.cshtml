@@ -1,0 +1,20 @@
+﻿@{ 
+    Layout = "_Layout";
+}
+
+@section styles
+{
+    <link href="/css/frontend.css" rel="stylesheet" type="text/css" />
+
+    @RenderSection("styles", false)
+}
+
+@section scripts {
+    @RenderSection("scripts", false)
+}
+
+@await Component.InvokeAsync("FrontendNavigationBar")
+
+<div id="content-section">
+    @RenderBody()
+</div>

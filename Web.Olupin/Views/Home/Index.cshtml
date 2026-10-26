@@ -1,0 +1,344 @@
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Frontend.HomeIndexViewModel
+
+@{ 
+    Layout = "_FrontendLayout";
+}
+
+@section styles
+{
+    <style type="text/css">
+        .hero-common {
+            background-position: 50% 0;
+            background-size: cover;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+
+        .img-service-card {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        #hero-main {
+            min-height: 720px;
+            @if (Model.HeroIlustration != null)
+            {
+                @Html.Raw(string.Format("background-blend-mode: overlay; background-color: rgba(0,0,0,0.15); background-image: url('/media/images/{0}.{1}');", Model.HeroIlustration.Image.Id, Model.HeroIlustration.Image.Extension))
+            }
+        }
+
+        #hero-feature {
+            min-height: 720px;
+            @if (Model.MainPromoIlustration != null)
+            {
+                @Html.Raw(string.Format("background-blend-mode: overlay; background-color: rgba(0,0,0,0.15); background-image: url('/media/images/{0}.{1}');", Model.MainPromoIlustration.Image.Id, Model.MainPromoIlustration.Image.Extension))
+            }
+        }
+
+        .hero-fullsize-child {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .hero-common-vintage {
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+        }
+
+        #hero-main-vintage {
+            background-image: url('/img/01_001.svg');
+            background-position: bottom;
+        }
+
+        #hero-feature-vintage {
+            background-image: url('/img/02_001.svg');
+            background-position: top;
+        }
+
+        .hero-common-overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        #partners-vintage {
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-image: url('/img/04.svg');
+            background-position: bottom;
+            min-height: 480px;
+        }
+
+        #section-service-lines {
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            background-image: url('/img/05.svg');
+            background-position: top;
+        }
+
+        .testimonial-carousel-item {
+            background-position: 50% 50%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            min-height: 420px;
+            display: flex !important;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .carousel-indicators > li {
+            height: 8px;
+        }
+
+        .testimonial-carousel-caption {
+            align-self: center;
+            background-color: rgba(255, 255,255, 0.85);
+        }
+    </style>
+}
+
+<section id="hero-main" class="hero-common">
+    <div class="hero-fullsize-child hero-common-overlay"></div>
+    <div id="hero-main-vintage" class="hero-fullsize-child hero-common-vintage"></div>
+    <div class="container pb-5" style="z-index: 1000;">
+        <div class="jumbotron text-white text-center mb-0" style="background: none;">
+            <h1 class="display-3">@Model.HeroTextBlock.Title</h1>
+            @if (!string.IsNullOrEmpty(Model.HeroTextBlock.Description))
+            {
+                <p class="lead">@Html.Raw(Model.HeroTextBlock.Description)</p>
+            }
+            <a class="btn btn-primary" asp-action="index" asp-controller="contact">Contactar</a>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <div class="row pt-5">
+        <div class="col-md-6">
+            <div class="jumbotron mb-0" style="background: none;">
+                <h1 class="display-4 font-weight-bold">@Model.AboutSummaryTextBlock.Title</h1>
+                @if (!string.IsNullOrEmpty(Model.AboutSummaryTextBlock.Description))
+                {
+                    <p class="lead">@Html.Raw(Model.AboutSummaryTextBlock.Description)</p>
+                }
+                <a class="btn btn-primary mt-4" asp-action="index" asp-controller="about">Conocer más</a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            @if (Model.AboutSummaryIlustration != null)
+            {
+                <img class="img-fluid img-thumbnail" title="ASISTEC S.R.L." src="/media/images/@Model.AboutSummaryIlustration.Image.Id.@Model.AboutSummaryIlustration.Image.Extension" />
+            }
+        </div>
+    </div>
+</section>
+
+<section id="hero-feature" class="hero-common">
+    <div class="hero-fullsize-child hero-common-overlay"></div>
+    <div id="hero-feature-vintage" class="hero-fullsize-child hero-common-vintage"></div>
+    <div class="container pt-5" style="z-index: 1000;">
+        <div class="jumbotron text-white text-center mb-0" style="background: none;">
+            <h1 class="display-3 mt-5">@Model.MainPromoTextBlock.Title</h1>
+            @if (!string.IsNullOrEmpty(Model.MainPromoTextBlock.Description))
+            {
+                <p class="lead">@Html.Raw(Model.MainPromoTextBlock.Description)</p>
+            }
+            <a class="btn btn-primary" asp-action="index" asp-controller="contact">Contactar</a>
+        </div>
+    </div>
+</section>
+
+<section id="section-service-lines" class="mb-5">
+    <div class="container">
+        <div class="text-center text-black pt-5 pb-4">
+            <h1 class="display-4 font-weight-bold">@Model.ServicesHeaderTextBlock.Title</h1>
+            @if (!string.IsNullOrEmpty(Model.ServicesHeaderTextBlock.Description))
+            {
+                <p class="lead">@Html.Raw(Model.ServicesHeaderTextBlock.Description)</p>
+            }
+        </div>
+        <div class="card-deck">
+            @foreach (var item in Model.Services)
+            {
+                <div class="card">
+                    <div class="card-img-top embed-responsive embed-responsive-4by3 img-service-card" style="background-image: url('/media/images/@item.FeatureImage.Id.@item.FeatureImage.Extension');"></div>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">@item.Summary</p>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="text-center mt-4">
+            <a class="btn btn-primary" asp-action="index" asp-controller="services">Descubrir más</a>
+        </div>
+    </div>
+</section>
+
+<section class="bg-white pb-5">
+    <div class="container">
+        <div class="text-center pt-5 pb-4">
+            <h1 class="display-4 font-weight-bold">@Model.ProductsHeaderTextBlock.Title</h1>
+            @if (!string.IsNullOrEmpty(Model.ProductsHeaderTextBlock.Description))
+            {
+                <p class="lead">@Html.Raw(Model.ProductsHeaderTextBlock.Description)</p>
+            }
+        </div>
+    </div>
+
+    <div class="text-center">
+        <p class="lead text-muted">Sin elementos que mostrar por el momento.</p>
+    </div>
+
+    <div class="text-center mt-4">
+        <a class="btn btn-success" href="https://tienda.asistec.moropo.cu" target="_blank"><i class="fas faw fa-shopping-bag mr-1"></i> Visitar la Tienda</a>
+    </div>
+</section>
+
+<div class="container">
+    <div class="text-center pt-5 pb-4">
+        <h1 class="display-5 font-weight-bold">@Model.TestimonialsHeaderTextBlock.Title</h1>
+        @if (!string.IsNullOrEmpty(Model.TestimonialsHeaderTextBlock.Description))
+        {
+            <p class="lead">@Html.Raw(Model.TestimonialsHeaderTextBlock.Description)</p>
+        }
+    </div>
+</div>
+
+<div id="testimonials-carousel" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        @{
+            for (var index = 0; index < Model.Testimonials.Length; index++)
+            {
+                var item = Model.Testimonials[index];
+
+                if (index != 0)
+                {
+                    <li data-target="#testimonial-item-@item.Id" data-slide-to="@index" ></li>
+                }
+                else
+                {
+                    <li data-target="#testimonial-item-@item.Id" data-slide-to="0" class="active"></li>
+                }
+            }
+        }
+    </ol>
+    <div class="carousel-inner">
+        @{
+            var isFirstRendered = false;
+
+            foreach (var item in Model.Testimonials)
+            {
+                if (isFirstRendered)
+                {
+                    <div id="testimonial-item-@item.Id" class="carousel-item testimonial-carousel-item" style="background-image: url('/media/images/@item.ContextImage.Id.@item.ContextImage.Extension');">
+                        <div class="carousel-caption bg-white p-3" style="max-width: 540px;">
+                            <div class="row no-gutters">
+                                <div class="col-auto mr-2">
+                                    <img class="img-fluid img-thumbnail rounded-circle" style="width: 96px;" src="~/media/images/@item.RepresentativeImage.Id.@item.RepresentativeImage.Extension" />
+                                </div>
+                                <div class="col">
+                                    <h4>@item.RepresentativeName</h4>
+                                    <h5>@item.InstitutionName</h5>
+                                    <p class="text-muted">@item.RepresentativePosition</p>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="fas fa-fw fa-2x fa-quote-left float-left mr-4"></span>
+                                <p class="mb-0">@item.Review</p>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    isFirstRendered = true;
+
+                    <div id="testimonial-item-@item.Id" class="carousel-item active testimonial-carousel-item" style="background-image: url('/media/images/@item.ContextImage.Id.@item.ContextImage.Extension');">
+                        <div class="testimonial-carousel-caption m-4 p-3" style="max-width: 540px;">
+                            <div class="row no-gutters">
+                                <div class="col-auto mr-2">
+                                    <img class="img-fluid img-thumbnail rounded-circle" style="width: 96px;" src="~/media/images/@item.RepresentativeImage.Id.@item.RepresentativeImage.Extension" />
+                                </div>
+                                <div class="col">
+                                    <h4>@item.RepresentativeName</h4>
+                                    <h5>@item.InstitutionName</h5>
+                                    <p class="text-muted">@item.RepresentativePosition</p>
+                                </div>
+                            </div>
+                            <div>
+                                <span class="fas fa-fw fa-2x fa-quote-left float-left mr-4"></span>
+                                <p class="mb-0">@item.Review</p>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-target="#testimonials-carousel" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-target="#testimonials-carousel" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Siguiente</span>
+    </button>
+</div>
+
+<section class="bg-white">
+    <div class="container">
+        <div class="text-center pt-5 pb-4">
+            <h1 class="display-5 font-weight-bold">@Model.PartnersHeaderTextBlock.Title</h1>
+            @if (!string.IsNullOrEmpty(Model.PartnersHeaderTextBlock.Description))
+            {
+                <p class="lead">@Html.Raw(Model.PartnersHeaderTextBlock.Description)</p>
+            }
+        </div>
+    </div>
+
+    <div id="partners-vintage" class="text-center">
+        <div class="container">
+            @if (Model.Partners.Length <= 0)
+            {
+                <p class="lead text-muted mb-0 py-3">Sin elementos que mostrar por el momento.</p>
+            }
+            else
+            {
+                <div class="row">
+                    @foreach (var item in Model.Partners)
+                    {
+                        <div class="col-3 col-lg-2 d-table">
+                            <img class="img-fluid" src="/media/images/@item.Image.Id.@item.Image.Extension" title="@item.Name" />
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="pb-5" style="background-color: #FF6702;">
+    <div class="container pb-5">
+        <div class="row align-items-center">
+            <div class="col-md-6 col-sm-9 text-white">
+                <h2>@Model.CallToActionTextBlock.Title</h2>
+                @if (!string.IsNullOrEmpty(Model.CallToActionTextBlock.Description))
+                {
+                    <p class="mb-0">@Html.Raw(Model.CallToActionTextBlock.Description)</p>
+                }
+            </div>
+            <div class="col-md-6 col-sm-3 text-right">
+                <a class="btn btn-primary text-uppercase" asp-action="index" asp-controller="contact">Contáctanos</a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,104 @@
+﻿@model MOROPO.ASISTEC.Web.Olupin.Models.View.Frontend.SolutionsIndexViewModel
+
+@{
+    const string TITLE = "Soluciones";
+
+    ViewData["Title"] = TITLE;
+
+    Layout = "_FrontendLayout";
+}
+
+@section styles
+{
+    <style type="text/css">
+        #hero-main {
+            min-height: 240px;
+            background-position: center;
+            background-size: cover;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            @if (Model.HeaderIlustration != null)
+            {
+                @Html.Raw(string.Format("background-image: url('/media/images/{0}.{1}');", Model.HeaderIlustration.Image.Id, Model.HeaderIlustration.Image.Extension))
+            }
+        }
+
+        #hero-main-vintage {
+            background-image: url('/img/01_001.svg');
+            background-position: bottom;
+            background-size: 100% auto;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        #solutions-section a {
+            color: #FF6702;
+        }
+
+        #solutions-section a.btn-primary {
+            background-color: #FF6702;
+            border-color: #FF6702;
+            color: white;
+        }
+    </style>
+}
+
+<section id="hero-main">
+    <div class="hero-fullsize-child hero-common-overlay"></div>
+    <div id="hero-main-vintage" class="hero-fullsize-child hero-common-vintage"></div>
+</section>
+
+<section id="solutions-section" class="pb-4">
+    <div class="container">
+        <h1 class="display-3 font-weight-normal mb-4">@Model.IntroTextBlock.Title</h1>
+        @if (!string.IsNullOrEmpty(Model.IntroTextBlock.Description))
+        {
+            <div class="mb-5">
+                @Html.Raw(Model.IntroTextBlock.Description)
+            </div>
+        }
+    </div>
+    <div class="container-fuild px-5">
+        @if (Model.Solutions.Length <= 0)
+        {
+            <p class="lead text-muted">Sin elementos que mostrar por el momento</p>
+        }
+        else
+        {
+            <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2">
+                @foreach (var item in Model.Solutions)
+                {
+                    <div class="col mb-4">
+                        <div class="card h-100">
+                            @if (item.FeatureImage != null)
+                            {
+                                <img src="~/media/images/@item.FeatureImage.Id.@item.FeatureImage.Extension" class="card-img-top" alt="@item.Title">
+                            }
+                            <div class="card-body">
+                                <h5 class="card-title">@item.Title</h5>
+                                <dl>
+                                    <dt>Servicio</dt>
+                                    <dd>@item.Service.Name</dd>
+                                    <dt>Cliente</dt>
+                                    <dd>@item.Partner.Name</dd>
+                                </dl>
+                                <p class="card-text">@item.Summary</p>
+                                <a class="btn btn-primary" asp-action="index" asp-route-key="@item.Id">Conocer más</a>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">@item.At.ToLongDateString()</small>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>
